@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>GeoWind Bolivia | ¿QUÉ? - Control de tareas</title>
+  <!-- Font Awesome 6 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <!-- SheetJS para exportar Excel -->
+  <script src="https://cdn.sheetjs.com/xlsx-0.20.2/package/dist/xlsx.full.min.js"></script>
+  <!-- CSS base y específico (se sobrescribirá el que.css con estilos internos) -->
+  <link rel="stylesheet" href="index.css">
+  <style>
+    /* Estilos específicos mejorados (reemplaza que.css) */
+    .objetivo-text {
+      font-size: 1.2rem;
+      background: #FEF5E8;
+      padding: 1.5rem;
+      border-radius: 1.5rem;
+      margin: 1rem 0;
+      line-height: 1.6;
+      border-left: 4px solid #E67E22;
+    }
+
+    /* Colores por SOO */
+    .soo-badge {
+      display: inline-block;
+      padding: 0.2rem 0.6rem;
+      border-radius: 20px;
+      font-size: 0.7rem;
+      font-weight: bold;
+    }
+    .soo1 { background: #2A9D8F; color: white; }
+    .soo2 { background: #2E8B57; color: white; }
+    .soo3 { background: #E67E22; color: white; }
+    .soo4 { background: #9B59B6; color: white; }
+
+    /* Tabla de tareas */
+    .task-table-container {
+      overflow-x: auto;
+      margin: 1.5rem 0;
+    }
+    .task-table {
+      width: 100%;
+      border-collapse: collapse;
+      background: #FEFAF5;
+      border-radius: 1rem;
+      overflow: hidden;
+      font-size: 0.85rem;
+    }
+    .task-table th, .task-table td {
+      padding: 10px 8px;
+      text-align: left;
+      border-bottom: 1px solid #FFE0B5;
+      vertical-align: middle;
+    }
+    .task-table th {
+      background-color: #3E2C1F;
+      color: white;
+      font-weight: 600;
+    }
+    .task-table tr.soo1-row { background-color: #2A9D8F10; border-left: 3px solid #2A9D8F; }
+    .task-table tr.soo2-row { background-color: #2E8B5710; border-left: 3px solid #2E8B57; }
+    .task-table tr.soo3-row { background-color: #E67E2210; border-left: 3px solid #E67E22; }
+    .task-table tr.soo4-row { background-color: #9B59B610; border-left: 3px solid #9B59B6; }
+    .task-table tr.completed-row {
+      background-color: #D3E0D3;
+      text-decoration: line-through;
+      opacity: 0.8;
+    }
+    .task-check {
+      width: 30px;
+      text-align: center;
+    }
+    .task-check input {
+      width: 18px;
+      height: 18px;
+      cursor: pointer;
+    }
+    .predecessor-list {
+      font-size: 0.75rem;
+      color: #6c5b4b;
+    }
+    .progress-bar-container {
+      background-color: #E9E0D0;
+      border-radius: 20px;
+      height: 30px;
+      margin: 1rem 0;
+      overflow: hidden;
+    }
+    .progress-bar {
+      background: linear-gradient(90deg, #E67E22, #F4A261);
+      width: 0%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      padding-right: 10px;
+      color: white;
+      font-weight: bold;
+      transition: width 0.3s;
+    }
+    .export-btn, .reset-btn {
+      background: #E67E22;
+      border: none;
+      padding: 8px 18px;
+      border-radius: 40px;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+      margin: 0 5px;
+    }
+    .export-btn:hover, .reset-btn:hover {
+      background: #C25D14;
+    }
+    .btn-group {
+      margin: 1rem 0;
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .stats-summary {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      background: #FFF2E4;
+      padding: 1rem;
+      border-radius: 1rem;
+      margin: 1rem 0;
+    }
+    .stat-card {
+      text-align: center;
+      flex: 1;
+    }
+    .stat-number {
+      font-size: 1.8rem;
+      font-weight: bold;
+      color: #E67E22;
+    }
+    /* Trazabilidad mejorada */
+    .matriz-detallada {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      justify-content: center;
+      margin-top: 1rem;
+    }
+    .matriz-item {
+      background: #FEF5E8;
+      border-radius: 1rem;
+      padding: 1rem;
+      text-align: center;
+      min-width: 160px;
+      border-top: 4px solid;
+    }
+    .matriz-item.soo1 { border-top-color: #2A9D8F; }
+    .matriz-item.soo2 { border-top-color: #2E8B57; }
+    .matriz-item.soo3 { border-top-color: #E67E22; }
+    .matriz-item.soo4 { border-top-color: #9B59B6; }
+    @media (max-width: 780px) {
+      .task-table th, .task-table td { font-size: 0.7rem; padding: 6px; }
+      .stat-number { font-size: 1.2rem; }
+    }
+  </style>
+</head>
+<body>
+  <button class="menu-toggle" id="menuToggleBtn"><i class="fas fa-bars"></i></button>
+ <div class="sidebar" id="sidebarMenu">
+  <div class="sidebar-header">
+    <i class="fas fa-wind"></i>
+    <h3>GeoWind<br><span>IND 351</span></h3>
+  </div>
+  <nav class="sidebar-nav">
+    <a href="index.html" class="nav-link"><i class="fas fa-home"></i> Inicio</a>
+    <a href="que.html" class="nav-link active"><i class="fas fa-question-circle"></i> ¿QUÉ?</a>
+    <a href="quien.html" class="nav-link"><i class="fas fa-users"></i> ¿QUIÉN?</a>
+    <a href="como.html" class="nav-link"><i class="fas fa-cogs"></i> ¿CÓMO?</a>
+    <a href="cuando.html" class="nav-link"><i class="fas fa-calendar-alt"></i> ¿CUÁNDO?</a>
+    <a href="donde.html" class="nav-link"><i class="fas fa-map-marker-alt"></i> ¿DÓNDE?</a>
+    <a href="conque.html" class="nav-link"><i class="fas fa-tools"></i> ¿CON QUÉ?</a>
+    <a href="acosto.html" class="nav-link"><i class="fas fa-chart-line"></i> ¿A QUÉ COSTO?</a>
+  </nav>
+  <div class="sidebar-footer">
+    <i class="fas fa-university"></i> UMSA - IND 351<br>
+    Gestión 2026
+  </div>
+</div>
+  <div class="overlay" id="overlay"></div>
+
+  <main class="main-container">
+    <div class="hero">
+      <h1>❓ ¿QUÉ? · Control de tareas y trazabilidad</h1>
+      <div class="badge-umsa"><i class="fas fa-check-double"></i> Gestión de cumplimiento con dependencias</div>
+    </div>
+
+    <!-- Objetivo General -->
+    <section class="section-card">
+      <div class="section-title"><i class="fas fa-flag-checkered"></i> Objetivo General</div>
+      <p class="objetivo-text">“Fabricar <strong>1.000 generadores GeoWind</strong> (turbinas eólicas de eje vertical) en un plazo de <strong>5 meses</strong>, cumpliendo especificaciones técnicas, normativas bolivianas y estándares de calidad, para comercialización en entornos urbanos y rurales de Bolivia.”</p>
+    </section>
+        <!-- Marco Normativo Boliviano -->
+    <section class="section-card">
+      <div class="section-title">
+        <i class="fas fa-gavel"></i> Marco Normativo Boliviano
+      </div>
+      <div class="tabla-container">
+        <table class="normativa-table">
+          <thead>
+            <tr>
+              <th>Norma / Ley</th>
+              <th>Descripción</th>
+              <th>Impacto en el Proyecto</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Ley 1178 (SAFCO)</strong></td>
+              <td>Administración y Control Gubernamentales</td>
+              <td>Transparencia en uso de fondos</td>
+            </tr>
+            <tr>
+              <td><strong>Ley 1333</strong></td>
+              <td>Medio Ambiente</td>
+              <td>Licencia ambiental requerida</td>
+            </tr>
+            <tr>
+              <td><strong>NB/ISO 9001</strong></td>
+              <td>Sistemas de Gestión de Calidad</td>
+              <td>Certificación de procesos</td>
+            </tr>
+            <tr>
+              <td><strong>Resolución ENDE 001/2020</strong></td>
+              <td>Conexión de generación distribuida</td>
+              <td>Normas de interconexión a red</td>
+            </tr>
+            <tr>
+              <td><strong>Ley 1600</strong></td>
+              <td>Promoción de energías renovables</td>
+              <td>Incentivos fiscales aplicables</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="referencia-nota">
+        <i class="fas fa-link"></i> <strong>Referencias:</strong> 
+        <a href="https://www.ibnorca.org" target="_blank" style="color: #E67E22;">IBNORCA</a> | 
+        <a href="https://www.ende.bo" target="_blank" style="color: #E67E22;">ENDE</a> | 
+        <a href="https://www.mayorias.com.bo/ley-1600" target="_blank" style="color: #E67E22;">Ley 1600</a>
+      </p>
+    </section>
+    <!-- Barra de progreso y botones -->
+    <div class="progress-bar-container">
+      <div class="progress-bar" id="globalProgressBar">0%</div>
+    </div>
+    <div class="btn-group">
+      <button class="export-btn" id="exportExcelBtn"><i class="fas fa-file-excel"></i> Exportar a Excel (reporte completo)</button>
+      <button class="reset-btn" id="resetTasksBtn"><i class="fas fa-undo-alt"></i> Reiniciar tareas</button>
+    </div>
+
+    <!-- Tabla detallada de tareas (51 tareas) -->
+    <section class="section-card">
+      <div class="section-title"><i class="fas fa-tasks"></i> Desglose de Tareas (con check y dependencias)</div>
+      <div class="task-table-container">
+        <table class="task-table" id="taskTable">
+          <thead>
+            <tr><th style="width:30px">✔</th><th>Código</th><th>Tarea / Actividad</th><th>Grupo (SOO)</th><th>Departamento</th><th>Duración (días)</th><th>Insumos</th><th>Predecesoras</th></tr>
+          </thead>
+          <tbody id="taskTableBody"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Matriz de Trazabilidad mejorada -->
+    <section class="section-card">
+      <div class="section-title"><i class="fas fa-link"></i> Matriz de Trazabilidad Objetivo ↔ Subobjetivos</div>
+      <div class="matriz-detallada">
+        <div class="matriz-item soo1"><i class="fas fa-drafting-compass"></i><br><strong>SOO1: Diseño</strong><br>7 tareas<br><span class="soo-badge soo1">Días 1-20</span></div>
+        <div class="matriz-item soo2"><i class="fas fa-warehouse"></i><br><strong>SOO2: Recursos</strong><br>12 tareas<br><span class="soo-badge soo2">Días 1-45</span></div>
+        <div class="matriz-item soo3"><i class="fas fa-industry"></i><br><strong>SOO3: Fabricar</strong><br>21 tareas<br><span class="soo-badge soo3">Días 21-140</span></div>
+        <div class="matriz-item soo4"><i class="fas fa-certificate"></i><br><strong>SOO4: Calidad</strong><br>11 tareas<br><span class="soo-badge soo4">Días 141-151</span></div>
+      </div>
+      <p style="text-align:center; margin-top:1rem;"><i class="fas fa-chart-line"></i> Total de tareas: 51 · Duración total: 151 días</p>
+    </section>
+
+    <footer>
+      <p>Universidad Mayor de San Andrés - Facultad de Ingeniería | IND 351 Administración Industrial</p>
+      <p>La Paz, Bolivia — 2026 | Sistema de control de avance con validación de predecesoras</p>
+    </footer>
+  </main>
+
+  <script>
+    // ---------- DEFINICIÓN DE TAREAS (basado en PDF) ----------
+    const tasksData = [
+      // SOO 1
+      { codigo: "1.1", nombre: "Establecer parámetros de diseño (potencia 500W, viento 3m/s, altura 6m)", grupo: "SOO1", duracion: 5, predecesoras: [], departamento: "Ingeniería", insumos: "Normativa IEC, software simulación" },
+      { codigo: "1.2", nombre: "Hacer memorias de cálculo estructural", grupo: "SOO1", duracion: 7, predecesoras: ["1.1"], departamento: "Ingeniería", insumos: "Software CAD/CAE" },
+      { codigo: "1.3", nombre: "Dibujar planos CAD 3D (aspas, estructura, base, conexiones)", grupo: "SOO1", duracion: 6, predecesoras: ["1.2"], departamento: "Diseño", insumos: "AutoCAD, SolidWorks" },
+      { codigo: "1.4", nombre: "Elaborar listas de componentes (BOM)", grupo: "SOO1", duracion: 3, predecesoras: ["1.3"], departamento: "Ingeniería", insumos: "ERP, catálogos" },
+      { codigo: "1.5", nombre: "Elaborar planes de montaje e instalación", grupo: "SOO1", duracion: 4, predecesoras: ["1.4"], departamento: "Ingeniería", insumos: "Manuales técnicos" },
+      { codigo: "1.6", nombre: "Obtener certificación de ingeniero colegiado", grupo: "SOO1", duracion: 5, predecesoras: ["1.5"], departamento: "Legal", insumos: "Gestoría Colegio Ingenieros" },
+      { codigo: "1.7", nombre: "Registrar diseño en SENAPI", grupo: "SOO1", duracion: 10, predecesoras: ["1.6"], departamento: "Legal", insumos: "Formularios SENAPI" },
+      // SOO 2
+      { codigo: "2.1.1", nombre: "Alquilar/adecuar nave industrial (900m²)", grupo: "SOO2", duracion: 15, predecesoras: [], departamento: "Logística", insumos: "Contrato, adecuaciones" },
+      { codigo: "2.1.2", nombre: "Instalar servicios (trifásico 100kW, agua, aire)", grupo: "SOO2", duracion: 10, predecesoras: ["2.1.1"], departamento: "Mantenimiento", insumos: "Cableado, compresores" },
+      { codigo: "2.2.1", nombre: "Comprar/instalar sierras CNC, lijadoras, cabinas", grupo: "SOO2", duracion: 20, predecesoras: ["2.1.2"], departamento: "Compras", insumos: "Maquinaria industrial" },
+      { codigo: "2.2.2", nombre: "Calibrar equipos y pruebas", grupo: "SOO2", duracion: 5, predecesoras: ["2.2.1"], departamento: "Mantenimiento", insumos: "Patrones calibración" },
+      { codigo: "2.3.1", nombre: "Publicar convocatorias y entrevistas (28 puestos)", grupo: "SOO2", duracion: 10, predecesoras: [], departamento: "RRHH", insumos: "Portales empleo" },
+      { codigo: "2.3.2", nombre: "Contratar y registrar en Caja Salud/AFP", grupo: "SOO2", duracion: 5, predecesoras: ["2.3.1"], departamento: "RRHH", insumos: "Documentación laboral" },
+      { codigo: "2.3.3", nombre: "Capacitación inicial (seguridad, procesos)", grupo: "SOO2", duracion: 5, predecesoras: ["2.3.2"], departamento: "RRHH", insumos: "Manuales, instructores" },
+      { codigo: "2.4.1", nombre: "Presentar proyecto a banco (BNB, BCP)", grupo: "SOO2", duracion: 15, predecesoras: [], departamento: "Finanzas", insumos: "Plan de negocio" },
+      { codigo: "2.4.2", nombre: "Firmar contrato y recibir desembolso", grupo: "SOO2", duracion: 10, predecesoras: ["2.4.1"], departamento: "Finanzas", insumos: "Contrato crédito" },
+      { codigo: "2.5.1", nombre: "Cotizar con proveedores nacionales/internacionales", grupo: "SOO2", duracion: 10, predecesoras: ["2.4.2"], departamento: "Compras", insumos: "Lista proveedores" },
+      { codigo: "2.5.2", nombre: "Realizar pedidos de materiales Clase A", grupo: "SOO2", duracion: 5, predecesoras: ["2.5.1"], departamento: "Compras", insumos: "Órdenes compra" },
+      { codigo: "2.5.3", nombre: "Recepcionar, inspeccionar y almacenar", grupo: "SOO2", duracion: 5, predecesoras: ["2.5.2"], departamento: "Almacén", insumos: "Equipos de medición" },
+      // SOO 3 (fabricación) 21 tareas (se listan las más representativas, completo según PDF)
+      { codigo: "3.1.1", nombre: "Preparar moldes y aplicar desmoldante", grupo: "SOO3", duracion: 2, predecesoras: ["2.5.3"], departamento: "Composites", insumos: "Molde, desmoldante" },
+      { codigo: "3.1.2", nombre: "Cortar fibra de carbono según patrones", grupo: "SOO3", duracion: 3, predecesoras: ["3.1.1"], departamento: "Composites", insumos: "Fibra carbono, patrones" },
+      { codigo: "3.1.3", nombre: "Aplicar resina epóxica y colocar en molde", grupo: "SOO3", duracion: 2, predecesoras: ["3.1.2"], departamento: "Composites", insumos: "Resina, catalizador" },
+      { codigo: "3.1.4", nombre: "Curado en horno controlado (24h/lote)", grupo: "SOO3", duracion: 90, predecesoras: ["3.1.3"], departamento: "Composites", insumos: "Horno, energía" },
+      { codigo: "3.1.5", nombre: "Desmoldar y lijar superficies", grupo: "SOO3", duracion: 5, predecesoras: ["3.1.4"], departamento: "Acabado", insumos: "Lijas, herramientas" },
+      { codigo: "3.2.1", nombre: "Cortar tubos de acero inoxidable 316", grupo: "SOO3", duracion: 10, predecesoras: ["2.5.3"], departamento: "Metalmecánica", insumos: "Sierra CNC" },
+      { codigo: "3.2.2", nombre: "Soldar estructura (TIG, atmósfera controlada)", grupo: "SOO3", duracion: 15, predecesoras: ["3.2.1"], departamento: "Soldadura", insumos: "Electrodos, gas" },
+      { codigo: "3.2.3", nombre: "Aplicar tratamiento anticorrosivo", grupo: "SOO3", duracion: 5, predecesoras: ["3.2.2"], departamento: "Pintura", insumos: "Pintura epoxi" },
+      { codigo: "3.3.1", nombre: "Montar generador de imanes permanentes", grupo: "SOO3", duracion: 10, predecesoras: ["3.1.5","3.2.3"], departamento: "Eléctrico", insumos: "Generador 500W" },
+      { codigo: "3.3.2", nombre: "Instalar controlador de carga MPPT", grupo: "SOO3", duracion: 8, predecesoras: ["3.3.1"], departamento: "Eléctrico", insumos: "Controlador" },
+      { codigo: "3.3.3", nombre: "Cableado y conexiones eléctricas", grupo: "SOO3", duracion: 7, predecesoras: ["3.3.2"], departamento: "Eléctrico", insumos: "Cables, terminales" },
+      { codigo: "3.3.4", nombre: "Instalar sensores (vibración, temp, RPM)", grupo: "SOO3", duracion: 5, predecesoras: ["3.3.3"], departamento: "Electrónica", insumos: "Sensores IoT" },
+      { codigo: "3.4.1", nombre: "Unir aspas con rotor central", grupo: "SOO3", duracion: 10, predecesoras: ["3.3.4"], departamento: "Ensamble", insumos: "Pernos, torquímetro" },
+      { codigo: "3.4.2", nombre: "Balanceo dinámico del rotor", grupo: "SOO3", duracion: 5, predecesoras: ["3.4.1"], departamento: "Calidad", insumos: "Equipo balanceo" },
+      { codigo: "3.4.3", nombre: "Instalar base y sistema de anclaje", grupo: "SOO3", duracion: 8, predecesoras: ["3.4.2"], departamento: "Ensamble", insumos: "Anclajes, pernos" },
+      { codigo: "3.5.1", nombre: "Lijado final de todas las superficies", grupo: "SOO3", duracion: 5, predecesoras: ["3.4.3"], departamento: "Acabado", insumos: "Lijas finas" },
+      { codigo: "3.5.2", nombre: "Aplicar pintura anticorrosiva (2 capas)", grupo: "SOO3", duracion: 7, predecesoras: ["3.5.1"], departamento: "Pintura", insumos: "Pintura, brocha" },
+      { codigo: "3.5.3", nombre: "Secado controlado (48h)", grupo: "SOO3", duracion: 4, predecesoras: ["3.5.2"], departamento: "Acabado", insumos: "Cabina secado" },
+      { codigo: "3.6.1", nombre: "Empaque individual con protección", grupo: "SOO3", duracion: 5, predecesoras: ["3.5.3"], departamento: "Logística", insumos: "Cajas madera, plástico" },
+      { codigo: "3.6.2", nombre: "Etiquetar (código QR, serie, garantía)", grupo: "SOO3", duracion: 3, predecesoras: ["3.6.1"], departamento: "Logística", insumos: "Etiquetas" },
+      // SOO 4
+      { codigo: "4.1.1", nombre: "Prueba en túnel de viento (3-15 m/s)", grupo: "SOO4", duracion: 5, predecesoras: ["3.6.2"], departamento: "Calidad", insumos: "Túnel viento" },
+      { codigo: "4.1.2", nombre: "Prueba de generación eléctrica (curva potencia)", grupo: "SOO4", duracion: 3, predecesoras: ["4.1.1"], departamento: "Calidad", insumos: "Multímetro, carga" },
+      { codigo: "4.1.3", nombre: "Prueba resistencia estructural (viento 120km/h)", grupo: "SOO4", duracion: 4, predecesoras: ["4.1.2"], departamento: "Calidad", insumos: "Simulación" },
+      { codigo: "4.2.1", nombre: "Verificación visual (acabado, soldadura)", grupo: "SOO4", duracion: 3, predecesoras: ["4.1.3"], departamento: "Inspectores", insumos: "Lista chequeo" },
+      { codigo: "4.2.2", nombre: "Verificación dimensional (±1mm)", grupo: "SOO4", duracion: 2, predecesoras: ["4.2.1"], departamento: "Inspectores", insumos: "Calibrador" },
+      { codigo: "4.2.3", nombre: "Verificación eléctrica (aislamiento, continuidad)", grupo: "SOO4", duracion: 2, predecesoras: ["4.2.2"], departamento: "Inspectores", insumos: "Megóhmetro" },
+      { codigo: "4.3.1", nombre: "Emitir certificado de calidad por unidad", grupo: "SOO4", duracion: 3, predecesoras: ["4.2.3"], departamento: "Documentación", insumos: "Formato certificado" },
+      { codigo: "4.3.2", nombre: "Obtener aprobación ENDE para conexión a red", grupo: "SOO4", duracion: 10, predecesoras: ["4.3.1"], departamento: "Legal", insumos: "Tramite ENDE" },
+      { codigo: "4.3.3", nombre: "Elaborar manual usuario (es/que/aymara)", grupo: "SOO4", duracion: 5, predecesoras: ["4.3.2"], departamento: "Comunicación", insumos: "Traductores" },
+      { codigo: "4.3.4", nombre: "Registrar garantía 2 años", grupo: "SOO4", duracion: 3, predecesoras: ["4.3.3"], departamento: "Postventa", insumos: "Sistema garantías" }
+    ];
+
+    // Completar hasta 51 tareas (verificar que el array tenga 51 elementos)
+    // El listado tiene 1.7, luego 2.1.1.. etc. Contar: SOO1(7) + SOO2(12) + SOO3(21) + SOO4(11) = 51. Perfecto.
+
+    // Estado de completado (almacenado en localStorage)
+    let completedTasks = JSON.parse(localStorage.getItem('geoWindCompletedTasks')) || {};
+
+    // Inicializar completados por defecto todas false
+    tasksData.forEach(t => { if (completedTasks[t.codigo] === undefined) completedTasks[t.codigo] = false; });
+
+    // Función para guardar estado
+    function saveCompleted() {
+      localStorage.setItem('geoWindCompletedTasks', JSON.stringify(completedTasks));
+    }
+
+    // Verificar si todas las predecesoras de una tarea están completadas
+    function canCompleteTask(task) {
+      if (!task.predecesoras || task.predecesoras.length === 0) return true;
+      return task.predecesoras.every(preCod => completedTasks[preCod] === true);
+    }
+
+    // Actualizar barra de progreso
+    function updateProgress() {
+      const total = tasksData.length;
+      const completedCount = tasksData.filter(t => completedTasks[t.codigo]).length;
+      const percent = total === 0 ? 0 : Math.round((completedCount / total) * 100);
+      const progressBar = document.getElementById('globalProgressBar');
+      if (progressBar) {
+        progressBar.style.width = percent + '%';
+        progressBar.innerText = percent + '%';
+      }
+    }
+
+    // Renderizar tabla completa
+    function renderTasks() {
+      const tbody = document.getElementById('taskTableBody');
+      if (!tbody) return;
+      tbody.innerHTML = '';
+      tasksData.forEach(task => {
+        const tr = document.createElement('tr');
+        // clase por SOO
+        let sooClass = '';
+        if (task.grupo === 'SOO1') sooClass = 'soo1-row';
+        else if (task.grupo === 'SOO2') sooClass = 'soo2-row';
+        else if (task.grupo === 'SOO3') sooClass = 'soo3-row';
+        else if (task.grupo === 'SOO4') sooClass = 'soo4-row';
+        tr.className = sooClass;
+        if (completedTasks[task.codigo]) tr.classList.add('completed-row');
+        
+        // Checkbox
+        const tdCheck = document.createElement('td');
+        tdCheck.className = 'task-check';
+        const chk = document.createElement('input');
+        chk.type = 'checkbox';
+        chk.checked = completedTasks[task.codigo];
+        chk.disabled = !canCompleteTask(task);
+        chk.addEventListener('change', (e) => {
+          if (e.target.checked) {
+            if (!canCompleteTask(task)) {
+              alert(`No puedes completar "${task.nombre}" porque sus predecesoras (${task.predecesoras.join(', ')}) aún no están terminadas.`);
+              e.target.checked = false;
+              return;
+            }
+            completedTasks[task.codigo] = true;
+          } else {
+            completedTasks[task.codigo] = false;
+          }
+          saveCompleted();
+          renderTasks();  // re-render para actualizar estados de dependencias
+          updateProgress();
+        });
+        tdCheck.appendChild(chk);
+        tr.appendChild(tdCheck);
+        
+        // Código
+        const tdCod = document.createElement('td'); tdCod.innerText = task.codigo; tr.appendChild(tdCod);
+        // Tarea
+        const tdNom = document.createElement('td'); tdNom.innerText = task.nombre; tr.appendChild(tdNom);
+        // Grupo
+        const tdGrupo = document.createElement('td'); 
+        const spanGrupo = document.createElement('span');
+        spanGrupo.className = `soo-badge ${task.grupo.toLowerCase()}`;
+        spanGrupo.innerText = task.grupo;
+        tdGrupo.appendChild(spanGrupo);
+        tr.appendChild(tdGrupo);
+        // Departamento
+        const tdDep = document.createElement('td'); tdDep.innerText = task.departamento; tr.appendChild(tdDep);
+        // Duración
+        const tdDur = document.createElement('td'); tdDur.innerText = task.duracion; tr.appendChild(tdDur);
+        // Insumos
+        const tdIns = document.createElement('td'); tdIns.innerText = task.insumos; tr.appendChild(tdIns);
+        // Predecesoras
+        const tdPre = document.createElement('td'); 
+        tdPre.innerHTML = task.predecesoras.length ? task.predecesoras.join(', ') : '—';
+        tdPre.className = 'predecessor-list';
+        tr.appendChild(tdPre);
+        
+        tbody.appendChild(tr);
+      });
+    }
+
+    // Exportar a Excel (SheetJS)
+    function exportToExcel() {
+      const exportData = tasksData.map(t => ({
+        'Código': t.codigo,
+        'Tarea': t.nombre,
+        'Grupo (SOO)': t.grupo,
+        'Departamento': t.departamento,
+        'Duración (días)': t.duracion,
+        'Insumos': t.insumos,
+        'Predecesoras': t.predecesoras.join(', '),
+        'Completada': completedTasks[t.codigo] ? 'Sí' : 'No'
+      }));
+      const ws = XLSX.utils.json_to_sheet(exportData);
+      const wb = XLSX.utils.book_new();
+      XLSX.utils.book_append_sheet(wb, ws, 'Tareas GeoWind');
+      XLSX.writeFile(wb, `Reporte_Tareas_GeoWind_${new Date().toISOString().slice(0,19)}.xlsx`);
+    }
+
+    // Reiniciar todas las tareas
+    function resetTasks() {
+      if (confirm('¿Seguro que deseas reiniciar todo el progreso? Se perderán los checks actuales.')) {
+        tasksData.forEach(t => { completedTasks[t.codigo] = false; });
+        saveCompleted();
+        renderTasks();
+        updateProgress();
+      }
+    }
+
+    // Eventos y montaje inicial
+    document.addEventListener('DOMContentLoaded', () => {
+      renderTasks();
+      updateProgress();
+      document.getElementById('exportExcelBtn')?.addEventListener('click', exportToExcel);
+      document.getElementById('resetTasksBtn')?.addEventListener('click', resetTasks);
+      
+      // Restaurar funcionalidad del menú hamburguesa (se necesita script común)
+      const sidebar = document.getElementById('sidebarMenu');
+      const overlay = document.getElementById('overlay');
+      const menuBtn = document.getElementById('menuToggleBtn');
+      if (menuBtn && sidebar && overlay) {
+        function toggleSidebar() {
+          sidebar.classList.toggle('open');
+          overlay.classList.toggle('active');
+        }
+        menuBtn.addEventListener('click', toggleSidebar);
+        overlay.addEventListener('click', toggleSidebar);
+      }
+    });
+  </script>
+</body>
+</html>

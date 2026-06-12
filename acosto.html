@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>GeoWind Bolivia | ¿A QUÉ COSTO? - Análisis financiero</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link rel="stylesheet" href="index.css">
+  <link rel="stylesheet" href="acosto.css">
+  <!-- SheetJS para exportar Excel (opcional) -->
+  <script src="https://cdn.sheetjs.com/xlsx-0.20.2/package/dist/xlsx.full.min.js"></script>
+</head>
+<body>
+
+  <button class="menu-toggle" id="menuToggleBtn"><i class="fas fa-bars"></i></button>
+
+  <div class="sidebar" id="sidebarMenu">
+    <div class="sidebar-header"><i class="fas fa-wind"></i><h3>GeoWind<br><span>IND 351</span></h3></div>
+    <nav class="sidebar-nav">
+      <a href="index.html" class="nav-link"><i class="fas fa-home"></i> Inicio</a>
+      <a href="que.html" class="nav-link"><i class="fas fa-question-circle"></i> ¿QUÉ?</a>
+      <a href="quien.html" class="nav-link"><i class="fas fa-users"></i> ¿QUIÉN?</a>
+      <a href="como.html" class="nav-link"><i class="fas fa-cogs"></i> ¿CÓMO?</a>
+      <a href="cuando.html" class="nav-link"><i class="fas fa-calendar-alt"></i> ¿CUÁNDO?</a>
+      <a href="donde.html" class="nav-link"><i class="fas fa-map-marker-alt"></i> ¿DÓNDE?</a>
+      <a href="conque.html" class="nav-link"><i class="fas fa-tools"></i> ¿CON QUÉ?</a>
+      <a href="acosto.html" class="nav-link active"><i class="fas fa-chart-line"></i> ¿A QUÉ COSTO?</a>
+    </nav>
+    <div class="sidebar-footer"><i class="fas fa-university"></i> UMSA - IND 351<br>Gestión 2026</div>
+  </div>
+  <div class="overlay" id="overlay"></div>
+
+  <main class="main-container">
+    <div class="hero">
+      <h1>💰 ¿A QUÉ COSTO? · Análisis financiero completo</h1>
+      <div class="badge-umsa"><i class="fas fa-chart-line"></i> Rentabilidad · Punto de equilibrio · ROI 35%</div>
+    </div>
+
+    <!-- FUNDAMENTO TEÓRICO -->
+    <section class="section-card">
+      <div class="section-title"><i class="fas fa-graduation-cap"></i> Fundamento teórico (IND 351)</div>
+      <p>La pregunta <strong>¿A QUÉ COSTO?</strong> responde a: <em>“¿A qué costo ejecutar las tareas para tener certeza de lograr el objetivo con rentabilidad?”</em></p>
+      <div class="teoria-grid">
+        <div class="teoria-item">
+          <h3><i class="fas fa-chart-pie"></i> Inversión vs Gasto</h3>
+          <p><strong>Inversión:</strong> Monto que se inyecta al giro productivo y <strong>devuelve utilidades</strong>. Ej: materia prima, salarios de obreros, energía del proceso.</p>
+          <p><strong>Gasto:</strong> Pagos por actividades <strong>no directamente productivas</strong>. Ej: sueldos administrativos, publicidad, impuestos.</p>
+        </div>
+        <div class="teoria-item">
+          <h3><i class="fas fa-chart-line"></i> Clasificación de costos</h3>
+          <p><strong>Costo Variable (CV):</strong> varía con el volumen de producción (materiales, insumos, mano de obra directa).</p>
+          <p><strong>Costo Fijo (CF):</strong> no varía con la producción (alquiler, sueldos gerenciales, seguros).</p>
+          <p><strong>Costo Total = CV + CF</strong></p>
+        </div>
+      </div>
+      <!-- Las tres barras del costo del producto -->
+      <div class="costo-barras">
+        <h3><i class="fas fa-chart-simple"></i> Estructura del costo por unidad (Bs. 4.399,65)</h3>
+        <div class="barra-stack">
+          <div class="barra-segmento variable" style="width: 90.3%">Costo Variable (90,3%)<br>3.974,65 Bs</div>
+          <div class="barra-segmento fijo" style="width: 9.7%">Costo Fijo (9,7%)<br>425,00 Bs</div>
+        </div>
+        <div class="barra-stack mt-1">
+          <div class="barra-segmento mp" style="width: 72.7%">MP + Insumos<br>3.200,50 Bs</div>
+          <div class="barra-segmento mo" style="width: 17.6%">Mano de Obra directa<br>774,15 Bs</div>
+        </div>
+        <p class="nota"><i class="fas fa-info-circle"></i> Costo variable: 3.974,65 Bs/unidad (materiales + mano de obra directa). Costo fijo unitario: 425 Bs/unidad (para 1.000 unidades).</p>
+      </div>
+    </section>
+
+    <!-- COSTOS VARIABLES DETALLADOS -->
+    <section class="section-card">
+      <div class="section-title"><i class="fas fa-boxes"></i> Costos variables – Materia prima, insumos y mano de obra directa</div>
+      <div class="sub-section">
+        <h3><i class="fas fa-cube"></i> Materia prima e insumos (para 1.000 unidades)</h3>
+        <div class="tabla-container">
+          <table class="costos-table">
+            <thead><tr><th>Material / Insumo</th><th>Unidad</th><th>Cantidad</th><th>Precio Unit. (Bs)</th><th>Total (Bs)</th></tr></thead>
+            <tbody>
+              <tr><td>Fibra de carbono</td><td>kg</td><td>3.000</td><td>250,00</td><td>750.000</td></tr>
+              <tr><td>Resina epóxica</td><td>kg</td><td>2.500</td><td>165,00</td><td>412.500</td></tr>
+              <tr><td>Acero inoxidable 316</td><td>kg</td><td>4.000</td><td>112,00</td><td>448.000</td></tr>
+              <tr><td>Imanes permanentes</td><td>pza</td><td>1.000</td><td>350,00</td><td>350.000</td></tr>
+              <tr><td>Cobre para bobinado</td><td>kg</td><td>1.500</td><td>90,00</td><td>135.000</td></tr>
+              <tr><td>Controlador MPPT</td><td>pza</td><td>1.000</td><td>350,00</td><td>350.000</td></tr>
+              <tr><td>Rodamientos cerámicos</td><td>pza</td><td>3.000</td><td>70,00</td><td>210.000</td></tr>
+              <tr><td>Cableado especial</td><td>m</td><td>15.000</td><td>10,00</td><td>150.000</td></tr>
+              <tr><td>Pintura anticorrosiva</td><td>L</td><td>1.000</td><td>40,00</td><td>40.000</td></tr>
+              <tr><td>Tornillería grado 8</td><td>glb</td><td>2.000</td><td>15,00</td><td>30.000</td></tr>
+              <tr><td>Silicona industrial</td><td>kg</td><td>200</td><td>50,00</td><td>10.000</td></tr>
+              <tr><td>Etiquetas y manuales</td><td>glb</td><td>1.000</td><td>5,00</td><td>5.000</td></tr>
+              <tr><td colspan="4" class="table-total">Subtotal materiales</td><td class="table-total">2.890.500 Bs</td></tr>
+              <tr><td>Energía eléctrica proceso</td><td>kWh</td><td>75.000</td><td>0,80</td><td>60.000</td></tr>
+              <tr><td>EPP operarios</td><td>glb</td><td>500</td><td>200,00</td><td>100.000</td></tr>
+              <tr><td>Repuestos maquinaria</td><td>glb</td><td>100</td><td>500,00</td><td>50.000</td></tr>
+              <tr><td>Lubricantes</td><td>L</td><td>500</td><td>40,00</td><td>20.000</td></tr>
+              <tr><td>Material de empaque</td><td>glb</td><td>1.000</td><td>80,00</td><td>80.000</td></tr>
+              <tr><td colspan="4" class="table-total">Subtotal insumos</td><td class="table-total">310.000 Bs</td></tr>
+              <tr><td colspan="4" class="table-total"><strong>Total MP + Insumos</strong></td><td class="table-total"><strong>3.200.500 Bs</strong></td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="enlace-conque">
+          <a href="conque.html#abc" class="btn-enlace"><i class="fas fa-chart-pie"></i> Ver clasificación ABC de materiales</a>
+        </div>
+      </div>
+
+      <div class="sub-section mt-2">
+        <h3><i class="fas fa-users"></i> Mano de obra directa (5 meses)</h3>
+        <div class="tabla-container">
+          <table class="costos-table">
+            <thead><tr><th>Cargo</th><th>Cantidad</th><th>Salario mensual (Bs)</th><th>Costo total 5 meses (Bs)</th></tr></thead>
+            <tbody>
+              <tr><td>Técnico en Composites</td><td>6</td><td>4.500</td><td>135.000</td></tr>
+              <tr><td>Soldador Certificado</td><td>4</td><td>5.000</td><td>100.000</td></tr>
+              <tr><td>Electricista Industrial</td><td>4</td><td>4.500</td><td>90.000</td></tr>
+              <tr><td>Ensamblador</td><td>8</td><td>3.500</td><td>140.000</td></tr>
+              <tr><td>Inspector de Calidad</td><td>3</td><td>4.500</td><td>67.500</td></tr>
+              <tr><td>Almacenero</td><td>2</td><td>3.500</td><td>35.000</td></tr>
+              <tr><td>Auxiliar de Almacén</td><td>2</td><td>2.800</td><td>28.000</td></tr>
+              <tr><td colspan="3" class="table-total">Subtotal salarios directos</td><td class="table-total">595.500 Bs</td></tr>
+              <tr><td colspan="3" class="table-total">Beneficios sociales (30%)</td><td class="table-total">178.650 Bs</td></tr>
+              <tr><td colspan="3" class="table-total"><strong>Total mano de obra directa</strong></td><td class="table-total"><strong>774.150 Bs</strong></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="resumen-variable">
+        <p><strong>Total Costo Variable (MP+insumos + MO directa):</strong> 3.200.500 + 774.150 = <strong>3.974.650 Bs</strong> → <strong>3.974,65 Bs/unidad</strong></p>
+      </div>
+    </section>
+
+    <!-- COSTOS FIJOS -->
+    <section class="section-card">
+      <div class="section-title"><i class="fas fa-building"></i> Costos fijos – Estructura administrativa y gastos periódicos</div>
+      <div class="tabla-container">
+        <table class="costos-table">
+          <thead><tr><th>Concepto</th><th>Detalle</th><th>Mensual (Bs)</th><th>Total 5 meses (Bs)</th></tr></thead>
+          <tbody>
+            <tr><td>Gerente de Proyecto</td><td>Salario ejecutivo</td><td>18.000</td><td>90.000</td></tr>
+            <tr><td>Jefe de Planta</td><td>Ingeniero</td><td>10.000</td><td>50.000</td></tr>
+            <tr><td>Jefe de Calidad</td><td>Certificado ISO</td><td>9.000</td><td>45.000</td></tr>
+            <tr><td>Jefe de Logística</td><td>Administrativo</td><td>8.000</td><td>40.000</td></tr>
+            <tr><td>Comprador</td><td>Operativo</td><td>5.000</td><td>25.000</td></tr>
+            <tr><td>Alquiler nave industrial</td><td>900 m² Cochabamba</td><td>15.000</td><td>75.000</td></tr>
+            <tr><td>Servicios básicos</td><td>Agua, internet industrial</td><td>2.000</td><td>10.000</td></tr>
+            <tr><td>Seguros</td><td>Equipos, responsabilidad civil</td><td>3.000</td><td>15.000</td></tr>
+            <tr><td>Depreciación equipos</td><td>5 años vida útil</td><td>5.000</td><td>25.000</td></tr>
+            <tr><td>Costos financieros</td><td>Intereses crédito bancario</td><td>8.000</td><td>40.000</td></tr>
+            <tr><td>Impuestos y tasas</td><td>Municipal, patentes</td><td>2.000</td><td>10.000</td></tr>
+            <tr><td colspan="2" class="table-total"><strong>Total costos fijos</strong></td><td class="table-total"><strong>85.000 Bs/mes</strong></td><td class="table-total"><strong>425.000 Bs</strong></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- RESUMEN COSTO TOTAL DE PRODUCCIÓN -->
+    <section class="section-card">
+      <div class="section-title"><i class="fas fa-calculator"></i> Costo total de producción (1.000 unidades)</div>
+      <div class="resumen-total">
+        <div class="resumen-item"><span>Materiales e insumos:</span><strong>3.200.500 Bs</strong></div>
+        <div class="resumen-item"><span>Mano de obra directa:</span><strong>774.150 Bs</strong></div>
+        <div class="resumen-item"><span>Costos fijos (5 meses):</span><strong>425.000 Bs</strong></div>
+        <div class="resumen-item total"><span>COSTO TOTAL PROYECTO:</span><strong>4.399.650 Bs</strong></div>
+        <div class="resumen-item"><span>Costo unitario:</span><strong>4.399,65 Bs/unidad</strong></div>
+      </div>
+    </section>
+
+    <!-- PRECIO DE VENTA -->
+    <section class="section-card">
+      <div class="section-title"><i class="fas fa-tag"></i> Construcción del precio de venta</div>
+      <div class="precio-pasos">
+        <div class="paso">1. Costo unitario: <strong>4.399,65 Bs</strong></div>
+        <div class="paso">2. Utilidad deseada (35%): <strong>+ 1.539,88 Bs</strong></div>
+        <div class="paso">3. Precio neto (sin IVA): <strong>5.939,53 Bs</strong></div>
+        <div class="paso">4. IVA Bolivia (13%): <strong>+ 772,14 Bs</strong></div>
+        <div class="paso final">5. Precio final al público: <strong>6.711,67 Bs</strong></div>
+      </div>
+      <p class="competencia"><i class="fas fa-trophy"></i> Competencia importada: > 9.000 Bs → <strong>ventaja competitiva del 25%</strong></p>
+    </section>
+
+    <!-- PUNTO DE EQUILIBRIO (con imagen modal) -->
+    <section class="section-card">
+      <div class="section-title"><i class="fas fa-balance-scale"></i> Punto de equilibrio</div>
+      <div class="equilibrio-grid">
+        <div class="formula-box">
+          <p><strong>Fórmula:</strong> PE = CF / (Pneto - CVu)</p>
+          <p>CF (5 meses) = 425.000 Bs<br>Precio neto unitario = 5.939,53 Bs<br>Costo variable unitario = 3.974,65 Bs</p>
+          <p><strong>Margen de contribución:</strong> 5.939,53 – 3.974,65 = 1.964,88 Bs</p>
+          <p><strong>PE = 425.000 / 1.964,88 = 216,3 unidades ≈ 217 unidades</strong></p>
+        </div>
+        <div class="grafico-pe">
+          <div class="barra-pe">
+            <div class="barra-cf" style="width: 100%">Costos fijos: 425.000 Bs</div>
+            <div class="barra-mc" style="width: 72.5%">Margen de contribución acumulado a 217 und</div>
+          </div>
+          <button id="btnVerEquilibrio" class="btn-modal-imagen"><i class="fas fa-chart-line"></i> Ver gráfico del punto de equilibrio</button>
+        </div>
+      </div>
+      <div class="interpretacion">
+        <i class="fas fa-lightbulb"></i> Se deben vender al menos <strong>217 turbinas</strong> para cubrir todos los costos. A partir de la unidad 218, cada venta genera utilidad pura.
+      </div>
+    </section>
+
+    <!-- CALCULADORA INTERACTIVA DE RENTABILIDAD -->
+    <section class="section-card">
+      <div class="section-title"><i class="fas fa-sliders-h"></i> Simulador de rentabilidad</div>
+      <div class="calculadora">
+        <label for="cantidadSlider">Unidades a producir / vender: <span id="cantidadValor">500</span></label>
+        <input type="range" id="cantidadSlider" min="0" max="1000" step="10" value="500">
+        <div class="resultados-simulador">
+          <div class="sim-item">Costo variable total: <span id="simCV">0</span> Bs</div>
+          <div class="sim-item">Costo fijo total: <span id="simCF">425.000</span> Bs</div>
+          <div class="sim-item">Costo total: <span id="simCT">0</span> Bs</div>
+          <div class="sim-item">Ingresos totales (PVP final): <span id="simIngresos">0</span> Bs</div>
+          <div class="sim-item utilidad">Utilidad neta: <span id="simUtilidad">0</span> Bs</div>
+          <div class="sim-item status" id="simStatus"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- INDICADORES DE RENTABILIDAD -->
+    <section class="section-card">
+      <div class="section-title"><i class="fas fa-chart-simple"></i> Indicadores clave de rentabilidad</div>
+      <div class="kpi-rentabilidad">
+        <div class="kpi-card"><i class="fas fa-percent"></i><h4>Margen bruto</h4><p>35,0%</p><small>sobre costo</small></div>
+        <div class="kpi-card"><i class="fas fa-chart-line"></i><h4>Margen neto</h4><p>26,5%</p><small>después de IVA</small></div>
+        <div class="kpi-card"><i class="fas fa-chart-pie"></i><h4>ROI (5 meses)</h4><p>35,0%</p><small>utilidad / inversión</small></div>
+        <div class="kpi-card"><i class="fas fa-hourglass-half"></i><h4>Payback</h4><p>1,1 meses</p><small>recuperación inversión</small></div>
+        <div class="kpi-card"><i class="fas fa-coins"></i><h4>Utilidad total</h4><p>1.539.880 Bs</p><small>por 1.000 unidades</small></div>
+        <div class="kpi-card"><i class="fas fa-tag"></i><h4>Utilidad por unidad</h4><p>1.539,88 Bs</p><small>neta por GeoWind</small></div>
+      </div>
+    </section>
+
+    <!-- FLUJO DE CAJA PROYECTADO -->
+    <section class="section-card">
+      <div class="section-title"><i class="fas fa-chart-column"></i> Flujo de caja proyectado (5 meses)</div>
+      <div class="tabla-container">
+        <table class="flujo-table">
+          <thead><tr><th>Mes</th><th>Producción (und)</th><th>Ingresos (Bs)</th><th>Costos (Bs)</th><th>Flujo neto (Bs)</th><th>Flujo acumulado</th></tr></thead>
+          <tbody>
+            <tr><td>Mes 1</td><td>0 (adecuación)</td><td>0</td><td>85.000</td><td>-85.000</td><td>-85.000</td></tr>
+            <tr><td>Mes 2</td><td>150</td><td>1.006.750</td><td>706.198</td><td>300.552</td><td>215.552</td></tr>
+            <tr><td>Mes 3</td><td>250</td><td>1.677.917</td><td>1.146.996</td><td>530.921</td><td>746.473</td></tr>
+            <tr><td>Mes 4</td><td>300</td><td>2.013.501</td><td>1.366.395</td><td>647.106</td><td>1.393.579</td></tr>
+            <tr><td>Mes 5</td><td>300</td><td>2.013.501</td><td>1.366.395</td><td>647.106</td><td>2.040.685</td></tr>
+            <tr class="total-row"><td><strong>Total</strong></td><td><strong>1.000</strong></td><td><strong>6.711.669</strong></td><td><strong>4.670.984</strong></td><td><strong>2.040.685</strong></td><td>-</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="nota-flujo"><i class="fas fa-chart-line"></i> El flujo acumulado positivo a partir del mes 2. Recuperación total de la inversión en menos de 2 meses.</p>
+    </section>
+
+    <!-- FINANCIAMIENTO Y CONSIDERACIONES BOLIVIA -->
+    <section class="section-card">
+      <div class="section-title"><i class="fas fa-hand-holding-usd"></i> Estructura de financiamiento</div>
+      <div class="financiamiento-grid">
+        <div class="fuente-card"><i class="fas fa-building-columns"></i><h3>BNB – Crédito PyME</h3><p>Monto: 500.000 Bs | Tasa: 8,5% anual | Plazo: 3 años</p></div>
+        <div class="fuente-card"><i class="fas fa-leaf"></i><h3>Fondo de Energías Renovables (Ley 1600)</h3><p>Monto: 200.000 Bs (subvención, 0% interés)</p></div>
+        <div class="fuente-card"><i class="fas fa-chart-line"></i><h3>Aporte de socios</h3><p>Monto: 102.000 Bs (capital propio)</p></div>
+      </div>
+      <div class="consideraciones">
+        <h3><i class="fas fa-globe-americas"></i> Consideraciones específicas para Bolivia</h3>
+        <ul>
+          <li><strong>Tipo de cambio:</strong> Componentes importados en dólares, se ha considerado precio real en plaza local.</li>
+          <li><strong>Aranceles de importación:</strong> MPPT, imanes y electrónicos asumen aranceles consolidados.</li>
+          <li><strong>Costos logísticos:</strong> Transporte desde puertos chilenos/peruanos hacia Cochabamba incrementa fletes.</li>
+          <li><strong>Mano de obra:</strong> Salarios base (2.800 – 5.000 Bs) reflejan la realidad industrial boliviana.</li>
+          <li><strong>Energía:</strong> Costo eléctrico industrial Bs. 0,80 / kWh, ventaja competitiva frente a importación.</li>
+          <li><strong>Incentivos:</strong> Ley 1600 ofrece beneficios fiscales sobre equipos verdes.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- RESUMEN EJECUTIVO -->
+    <section class="section-card resumen-ejecutivo">
+      <div class="section-title"><i class="fas fa-file-alt"></i> Resumen ejecutivo – Proyecto GeoWind</div>
+      <div class="resumen-grid">
+        <div><span>Unidades a producir:</span><strong>1.000 GeoWind</strong></div>
+        <div><span>Duración del proyecto:</span><strong>151 días (5 meses)</strong></div>
+        <div><span>Inversión total requerida:</span><strong>4.399.650 Bs</strong></div>
+        <div><span>Costo unitario de producción:</span><strong>4.399,65 Bs</strong></div>
+        <div><span>Precio de venta sugerido:</span><strong>6.711,67 Bs</strong></div>
+        <div><span>Utilidad neta total:</span><strong>1.539.880 Bs</strong></div>
+        <div><span>Tasa de Retorno (ROI):</span><strong>35,0%</strong></div>
+        <div><span>Punto de equilibrio:</span><strong>217 unidades</strong></div>
+        <div><span>Tiempo de recuperación:</span><strong>1,1 meses</strong></div>
+      </div>
+      <p class="conclusion-viabilidad">✅ El proyecto es técnica y financieramente viable, con un precio altamente competitivo (Bs. 6.711 frente a Bs. 9.000+ de la competencia importada).</p>
+    </section>
+
+    <footer>
+      <p>Universidad Mayor de San Andrés - Facultad de Ingeniería | IND 351 Administración Industrial</p>
+      <p>La Paz, Bolivia — 2026 | Análisis basado en costos reales del mercado boliviano</p>
+    </footer>
+  </main>
+
+  <!-- MODAL PARA IMAGEN EQUILIBRIO.JPG -->
+  <div id="modalEquilibrio" class="modal">
+    <div class="modal-content">
+      <span class="close-modal">&times;</span>
+      <h3><i class="fas fa-chart-line"></i> Gráfico del punto de equilibrio – GeoWind Bolivia</h3>
+      <div class="zoom-controls">
+        <button id="zoomInBtn" class="zoom-btn"><i class="fas fa-search-plus"></i></button>
+        <button id="zoomOutBtn" class="zoom-btn"><i class="fas fa-search-minus"></i></button>
+        <button id="zoomResetBtn" class="zoom-btn"><i class="fas fa-undo-alt"></i></button>
+      </div>
+      <div class="modal-image-container">
+        <img id="equilibrioImg" src="equilibrio.jpg" alt="Gráfico punto de equilibrio">
+      </div>
+      <p class="modal-nota">Haga clic en la imagen para zoom rápido | Use botones +/- para ajustar</p>
+    </div>
+  </div>
+
+  <!-- CARGA DEL SCRIPT DEL MENÚ LATERAL (script.js) Y LUEGO EL SIMULADOR -->
+  <script src="script.js"></script>
+  <script>
+    // ----- Variables del modelo (simulador y modal) -----
+    const CF = 425000;          // Costos fijos totales 5 meses
+    const CVu = 3974.65;        // Costo variable unitario
+    const PVP = 6711.67;        // Precio final con IVA
+    const Pneto = 5939.53;      // Precio sin IVA
+
+    // ----- Simulador slider -----
+    const slider = document.getElementById('cantidadSlider');
+    const cantidadValor = document.getElementById('cantidadValor');
+    const simCV = document.getElementById('simCV');
+    const simCF = document.getElementById('simCF');
+    const simCT = document.getElementById('simCT');
+    const simIngresos = document.getElementById('simIngresos');
+    const simUtilidad = document.getElementById('simUtilidad');
+    const simStatus = document.getElementById('simStatus');
+
+    function actualizarSimulador() {
+      let q = parseInt(slider.value);
+      cantidadValor.innerText = q;
+      let cvTotal = CVu * q;
+      let ctTotal = cvTotal + CF;
+      let ingresos = PVP * q;
+      let utilidad = ingresos - ctTotal;
+      simCV.innerText = cvTotal.toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+      simCF.innerText = CF.toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+      simCT.innerText = ctTotal.toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+      simIngresos.innerText = ingresos.toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+      simUtilidad.innerText = utilidad.toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+      if (q < 217) {
+        simStatus.innerHTML = `<i class="fas fa-exclamation-triangle"></i> Por debajo del punto de equilibrio (${q} / 217). Necesitas vender ${217 - q} unidades más para cubrir costos.`;
+        simStatus.style.color = "#D45A1A";
+      } else {
+        simStatus.innerHTML = `<i class="fas fa-check-circle"></i> Por encima del punto de equilibrio. Utilidad generada: ${utilidad.toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ",")} Bs.`;
+        simStatus.style.color = "#2A9D8F";
+      }
+    }
+    slider.addEventListener('input', actualizarSimulador);
+    actualizarSimulador();
+
+    // ----- Modal de imagen -----
+    const modal = document.getElementById('modalEquilibrio');
+    const btn = document.getElementById('btnVerEquilibrio');
+    const closeModal = document.querySelector('.close-modal');
+    const img = document.getElementById('equilibrioImg');
+    let currentZoom = 1;
+
+    function openModal() { modal.style.display = 'flex'; document.body.style.overflow = 'hidden'; resetZoom(); }
+    function closeModalFn() { modal.style.display = 'none'; document.body.style.overflow = 'auto'; }
+    function resetZoom() { currentZoom = 1; img.style.transform = `scale(${currentZoom})`; img.style.cursor = 'zoom-in'; }
+    function zoomIn() { if (currentZoom < 2.5) { currentZoom += 0.25; img.style.transform = `scale(${currentZoom})`; img.style.cursor = currentZoom > 1 ? 'zoom-out' : 'zoom-in'; } }
+    function zoomOut() { if (currentZoom > 0.6) { currentZoom -= 0.25; img.style.transform = `scale(${currentZoom})`; img.style.cursor = currentZoom <= 1 ? 'zoom-in' : 'zoom-out'; } }
+    img.addEventListener('click', () => { if (currentZoom === 1) zoomIn(); else resetZoom(); });
+    if (btn) btn.addEventListener('click', openModal);
+    if (closeModal) closeModal.addEventListener('click', closeModalFn);
+    window.addEventListener('click', (e) => { if (e.target === modal) closeModalFn(); });
+    document.getElementById('zoomInBtn')?.addEventListener('click', zoomIn);
+    document.getElementById('zoomOutBtn')?.addEventListener('click', zoomOut);
+    document.getElementById('zoomResetBtn')?.addEventListener('click', resetZoom);
+    img.onerror = () => { img.src = 'https://placehold.co/1000x600/F4E3D0/E67E22?text=Gráfico+Punto+de+Equilibrio+(cargar+equilibrio.jpg)'; };
+  </script>
+</body>
+</html>

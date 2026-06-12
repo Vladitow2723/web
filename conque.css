@@ -1,0 +1,199 @@
+/* Estilos específicos para ¿CON QUÉ? - Versión profesional con modales y tablas */
+
+.section-card {
+  overflow-x: auto;
+}
+
+/* Estilos de fórmulas */
+.formula-basica {
+  background: #E67E2210;
+  border-radius: 1.2rem;
+  padding: 1rem;
+  margin-top: 1rem;
+}
+.formula-basica ul {
+  margin-left: 1.5rem;
+}
+
+/* Tablas de clasificación ABC y cálculos */
+.tabla-container {
+  overflow-x: auto;
+  margin: 1rem 0;
+}
+.abc-table, .ss-table, .pp-table, .qe-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #FEFAF5;
+  border-radius: 1rem;
+  font-size: 0.85rem;
+}
+.abc-table th, .ss-table th, .pp-table th, .qe-table th,
+.abc-table td, .ss-table td, .pp-table td, .qe-table td {
+  padding: 10px 6px;
+  border: 1px solid #FFE0B5;
+  text-align: center;
+}
+.abc-table th, .ss-table th, .pp-table th, .qe-table th {
+  background: #3E2C1F;
+  color: white;
+}
+.clase-a { background: #D45A1A20; font-weight: bold; color: #D45A1A; }
+.clase-b { background: #F4A26120; font-weight: bold; color: #E67E22; }
+.clase-c { background: #8B5A2B20; font-weight: bold; color: #8B5A2B; }
+.nota {
+  margin-top: 0.5rem;
+  font-size: 0.85rem;
+  background: #FFF2E4;
+  padding: 0.5rem;
+  border-radius: 0.8rem;
+}
+
+/* Tarjetas de cálculos */
+.calculos-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.2rem;
+  margin: 1rem 0;
+}
+.calc-card {
+  background: #FEFAF5;
+  border-radius: 1rem;
+  padding: 1rem;
+  border-left: 4px solid #E67E22;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+}
+.calc-card h4 {
+  margin-bottom: 0.5rem;
+  color: #3E2C1F;
+}
+.calc-card p {
+  font-size: 0.9rem;
+}
+
+/* Botón para modelo diente de sierra */
+.btn-modelo-container {
+  text-align: center;
+  margin: 1.5rem 0 0.5rem;
+}
+.btn-modelo {
+  background: #E67E22;
+  border: none;
+  padding: 0.8rem 1.8rem;
+  border-radius: 3rem;
+  color: white;
+  font-weight: bold;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+.btn-modelo i { margin-right: 8px; }
+.btn-modelo:hover { background: #C25D14; transform: scale(1.02); }
+
+/* Grid de materiales y equipos (se mantiene el estilo anterior pero mejorado) */
+.materiales-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.2rem;
+  margin-top: 1rem;
+}
+.material-categoria {
+  background: #FEFAF5;
+  border-radius: 1rem;
+  padding: 1rem;
+  border-left: 4px solid #E67E22;
+}
+.material-categoria h3 i { color: #E67E22; margin-right: 8px; }
+.material-categoria ul { margin-left: 1.5rem; }
+.equipos-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 0.8rem;
+  margin-top: 1rem;
+}
+.equipo {
+  background: #FFF2E4;
+  padding: 0.6rem;
+  border-radius: 2rem;
+  text-align: center;
+  font-weight: 500;
+}
+.equipo i { margin-right: 6px; color: #E67E22; }
+
+/* Modal y zoom (reutilizado de cuando.html) */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 2000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.85);
+  justify-content: center;
+  align-items: center;
+}
+.modal-content {
+  background: #FFF9EF;
+  border-radius: 2rem;
+  width: 90%;
+  max-width: 1100px;
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  animation: fadeIn 0.3s;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+}
+@keyframes fadeIn { from { opacity: 0; transform: scale(0.95); } to { opacity: 1; transform: scale(1); } }
+.close-modal {
+  align-self: flex-end;
+  font-size: 2rem;
+  font-weight: bold;
+  color: #E67E22;
+  cursor: pointer;
+  padding: 0.5rem 1rem;
+}
+.close-modal:hover { color: #C25D14; }
+.modal-content h3 { text-align: center; margin: 0 0 0.5rem; color: #3E2C1F; }
+.zoom-controls {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin: 0.5rem 0;
+}
+.zoom-btn {
+  background: #E67E22;
+  border: none;
+  color: white;
+  font-size: 1.2rem;
+  padding: 0.4rem 1rem;
+  border-radius: 2rem;
+  cursor: pointer;
+  transition: 0.2s;
+}
+.zoom-btn:hover { background: #C25D14; }
+.modal-image-container {
+  overflow: auto;
+  text-align: center;
+  padding: 1rem;
+  max-height: 65vh;
+  background: #FEF5E8;
+}
+.modal-image-container img {
+  transition: transform 0.2s ease;
+  max-width: 100%;
+  transform-origin: center;
+  cursor: zoom-in;
+}
+.modal-nota {
+  text-align: center;
+  font-size: 0.8rem;
+  padding: 0.8rem;
+  color: #6c5b4b;
+}
+
+@media (max-width: 780px) {
+  .abc-table, .ss-table, .pp-table, .qe-table { font-size: 0.7rem; }
+  .btn-modelo { padding: 0.6rem 1.2rem; font-size: 0.9rem; }
+  .modal-content { width: 95%; }
+}

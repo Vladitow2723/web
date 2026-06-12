@@ -1,0 +1,199 @@
+/* Estilos específicos para la página de Gantt detallado */
+.toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  background: #FEFAF5;
+  padding: 0.8rem 1.2rem;
+  border-radius: 2rem;
+}
+.tool-btn {
+  background: #E67E22;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 2rem;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.2s;
+}
+.tool-btn.reset {
+  background: #8B5A2B;
+}
+.tool-btn:hover {
+  transform: scale(1.02);
+  background: #C25D14;
+}
+.leyenda-gantt {
+  display: flex;
+  gap: 1rem;
+  font-size: 0.8rem;
+}
+.leyenda-gantt i {
+  margin-right: 0.3rem;
+}
+
+/* Contenedor del Gantt con scroll */
+.gantt-detalle-container {
+  background: white;
+  border-radius: 1rem;
+  overflow-x: auto;
+  margin-bottom: 2rem;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+.gantt-scroll-wrapper {
+  min-width: 800px;
+}
+.gantt-timeline {
+  display: grid;
+  grid-auto-rows: auto;
+  font-size: 0.7rem;
+}
+.gantt-header-cell, .gantt-day-header {
+  background: #3E2C1F;
+  color: white;
+  font-weight: bold;
+  padding: 8px 4px;
+  text-align: center;
+  border-right: 1px solid #FFE0B5;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+.gantt-header-cell {
+  background: #2C1E12;
+  font-size: 0.8rem;
+}
+.gantt-day-header {
+  background: #5A4A38;
+  font-size: 0.65rem;
+  min-width: 40px;
+}
+.gantt-row {
+  display: contents;
+}
+.gantt-task-name {
+  background: #FEFAF5;
+  padding: 8px 6px;
+  border-bottom: 1px solid #FFE0B5;
+  font-weight: 500;
+  position: sticky;
+  left: 0;
+  background-color: #FFF9EF;
+  z-index: 5;
+}
+.gantt-task-name.critical-task {
+  border-left: 3px solid #D45A1A;
+  font-weight: bold;
+}
+.task-code {
+  font-family: monospace;
+  background: #E67E2220;
+  padding: 2px 6px;
+  border-radius: 20px;
+  margin-right: 8px;
+  font-size: 0.7rem;
+}
+.gantt-cell {
+  border-bottom: 1px solid #FFE0B5;
+  border-right: 1px solid #FFE0B5;
+  position: relative;
+  min-width: 30px;
+}
+.gantt-bar-cell {
+  background: #FFF2E4;
+}
+.gantt-bar {
+  position: absolute;
+  top: 2px;
+  bottom: 2px;
+  left: 1px;
+  border-radius: 12px;
+  color: white;
+  font-size: 0.65rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  text-shadow: 0 0 1px black;
+  z-index: 2;
+}
+
+/* Sección de notas */
+.notas-section {
+  margin-top: 2rem;
+  background: #FEFAF5;
+  border-radius: 1.5rem;
+  padding: 1.2rem;
+}
+.notas-section h3 {
+  margin-bottom: 1rem;
+  color: #3E2C1F;
+}
+.notas-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 1rem;
+}
+.nota-card {
+  background: white;
+  border-radius: 1rem;
+  padding: 0.8rem;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+  border-left: 4px solid #E67E22;
+}
+.nota-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+.task-id {
+  font-family: monospace;
+  background: #F4E3CF;
+  padding: 2px 8px;
+  border-radius: 20px;
+  font-size: 0.7rem;
+}
+.task-phase {
+  font-size: 0.65rem;
+  padding: 2px 8px;
+  border-radius: 20px;
+  color: white;
+  font-weight: bold;
+}
+.nota-textarea {
+  width: 100%;
+  border: 1px solid #FFE0B5;
+  border-radius: 0.8rem;
+  padding: 0.5rem;
+  font-family: inherit;
+  font-size: 0.8rem;
+  resize: vertical;
+  background: #FFFEF8;
+}
+.nota-textarea:focus {
+  outline: none;
+  border-color: #E67E22;
+}
+
+@media (max-width: 780px) {
+  .toolbar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .notas-grid {
+    grid-template-columns: 1fr;
+  }
+  .gantt-timeline {
+    font-size: 0.6rem;
+  }
+  .gantt-day-header {
+    min-width: 25px;
+  }
+}

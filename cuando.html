@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>GeoWind Bolivia | ¿CUÁNDO? - Cronograma y CPM</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link rel="stylesheet" href="index.css">
+  <link rel="stylesheet" href="cuando.css">
+</head>
+<body>
+
+  <button class="menu-toggle" id="menuToggleBtn"><i class="fas fa-bars"></i></button>
+
+  <div class="sidebar" id="sidebarMenu">
+    <div class="sidebar-header"><i class="fas fa-wind"></i><h3>GeoWind<br><span>IND 351</span></h3></div>
+    <nav class="sidebar-nav">
+      <a href="index.html" class="nav-link"><i class="fas fa-home"></i> Inicio</a>
+      <a href="que.html" class="nav-link"><i class="fas fa-question-circle"></i> ¿QUÉ?</a>
+      <a href="quien.html" class="nav-link"><i class="fas fa-users"></i> ¿QUIÉN?</a>
+      <a href="como.html" class="nav-link"><i class="fas fa-cogs"></i> ¿CÓMO?</a>
+      <a href="cuando.html" class="nav-link active"><i class="fas fa-calendar-alt"></i> ¿CUÁNDO?</a>
+      <a href="donde.html" class="nav-link"><i class="fas fa-map-marker-alt"></i> ¿DÓNDE?</a>
+      <a href="conque.html" class="nav-link"><i class="fas fa-tools"></i> ¿CON QUÉ?</a>
+      <a href="acosto.html" class="nav-link"><i class="fas fa-chart-line"></i> ¿A QUÉ COSTO?</a>
+    </nav>
+    <div class="sidebar-footer"><i class="fas fa-university"></i> UMSA - IND 351<br>Gestión 2026</div>
+  </div>
+  <div class="overlay" id="overlay"></div>
+
+  <main class="main-container">
+    <div class="hero">
+      <h1>📅 ¿CUÁNDO? · Planificación y Control de Tiempos</h1>
+      <div class="badge-umsa"><i class="fas fa-hourglass-half"></i> 151 días hábiles · Método CPM · Diagrama de Gantt</div>
+    </div>
+
+    <!-- Fases del proyecto -->
+    <section class="section-card">
+      <div class="section-title"><i class="fas fa-chart-line"></i> Fases del Proyecto</div>
+      <div class="timeline-fases">
+        <div class="fase fase-1"><i class="fas fa-drafting-compass"></i><h3>Diseño</h3><p>Días 1–20</p><span>Certificación técnica</span></div>
+        <div class="fase fase-2"><i class="fas fa-warehouse"></i><h3>Recursos</h3><p>Días 1–45</p><span>Planta y materiales</span></div>
+        <div class="fase fase-3"><i class="fas fa-industry"></i><h3>Fabricación</h3><p>Días 21–140</p><span>1.000 unidades</span></div>
+        <div class="fase fase-4"><i class="fas fa-certificate"></i><h3>Calidad</h3><p>Días 141–151</p><span>Certificación final</span></div>
+      </div>
+    </section>
+
+
+    <!-- Diagrama de Gantt – Resumen (vista línea de tiempo) -->
+    <section class="section-card">
+      <div class="section-title"><i class="fas fa-chart-gantt"></i> Cronograma visual – Línea de tiempo</div>
+      <div class="timeline-visual">
+        <div class="timeline-track">
+          <div class="timeline-header">
+            <span>Fase</span><span>Duración</span><span>Hitos clave</span>
+          </div>
+          <div class="timeline-fase" data-fase="diseño">
+            <div class="timeline-barra" style="width: 13%; background: #2A9D8F;">
+              <span>Diseño</span>
+            </div>
+            <div class="timeline-detalle">
+              <strong>Días 1-20</strong> – Planos, cálculos y certificación.
+            </div>
+          </div>
+          <div class="timeline-fase" data-fase="recursos">
+            <div class="timeline-barra" style="width: 30%; background: #E67E22;">
+              <span>Recursos</span>
+            </div>
+            <div class="timeline-detalle">
+              <strong>Días 1-45</strong> – Nave, maquinaria, personal, materiales.
+            </div>
+          </div>
+          <div class="timeline-fase" data-fase="fabricacion">
+            <div class="timeline-barra" style="width: 79%; background: #8B5A2B;">
+              <span>Fabricación</span>
+            </div>
+            <div class="timeline-detalle">
+              <strong>Días 21-140</strong> – Aspas, estructura, ensamble, pintura.
+            </div>
+          </div>
+          <div class="timeline-fase" data-fase="calidad">
+            <div class="timeline-barra" style="width: 7%; background: #D45A1A;">
+              <span>Calidad</span>
+            </div>
+            <div class="timeline-detalle">
+              <strong>Días 141-151</strong> – Pruebas, certificación, manuales.
+            </div>
+          </div>
+        </div>
+        <div class="timeline-footer">
+          <div class="timeline-marca">
+            <span class="marca-inicio">Inicio Día 1</span>
+            <span class="marca-fin">Fin Día 151</span>
+          </div>
+          <div class="btn-gantt-detalle">
+            <a href="diagramagantt.html" class="btn-detalle"><i class="fas fa-chart-simple"></i> Ver diagrama de Gantt detallado</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Hitos clave -->
+    <section class="section-card">
+      <div class="section-title"><i class="fas fa-flag-checkered"></i> Hitos Clave del Proyecto</div>
+      <div class="hitos-grid">
+        <div class="hito"><div class="fecha">Día 20</div><div class="evento"><i class="fas fa-check-circle"></i> Diseño certificado por Colegio de Ingenieros</div></div>
+        <div class="hito"><div class="fecha">Día 45</div><div class="evento"><i class="fas fa-check-circle"></i> Planta operativa + 80% materiales Clase A</div></div>
+        <div class="hito"><div class="fecha">Día 70</div><div class="evento"><i class="fas fa-check-circle"></i> Primeras 200 unidades ensambladas</div></div>
+        <div class="hito"><div class="fecha">Día 100</div><div class="evento"><i class="fas fa-check-circle"></i> 500 unidades producidas</div></div>
+        <div class="hito"><div class="fecha">Día 120</div><div class="evento"><i class="fas fa-check-circle"></i> 800 unidades fabricadas</div></div>
+        <div class="hito"><div class="fecha">Día 140</div><div class="evento"><i class="fas fa-check-circle"></i> Lote final producido</div></div>
+        <div class="hito"><div class="fecha">Día 151</div><div class="evento"><i class="fas fa-check-circle"></i> Certificación ENDE + garantías</div></div>
+      </div>
+    </section>
+
+    <!-- Ruta crítica CPM con botón para ver diagrama -->
+    <section class="section-card">
+      <div class="section-title"><i class="fas fa-diagram-project"></i> Análisis de Ruta Crítica (CPM)</div>
+      <p>La ruta crítica determina la duración mínima del proyecto. Las actividades que no pueden retrasarse son:</p>
+      <div class="ruta-critica">
+        <div class="actividad-critica"><i class="fas fa-arrow-right"></i> Diseño de planos (1.1 – 1.3)</div>
+        <div class="actividad-critica"><i class="fas fa-arrow-right"></i> Compra de materiales (2.5.1 – 2.5.3)</div>
+        <div class="actividad-critica"><i class="fas fa-arrow-right"></i> Fabricación de aspas – Curado (3.1.4) → 90 días</div>
+        <div class="actividad-critica"><i class="fas fa-arrow-right"></i> Soldadura de estructura (3.2.2)</div>
+        <div class="actividad-critica"><i class="fas fa-arrow-right"></i> Ensamble final + balanceo (3.4.1 – 3.4.2)</div>
+        <div class="actividad-critica"><i class="fas fa-arrow-right"></i> Prueba en túnel de viento (4.1.1)</div>
+      </div>
+      <div class="cpm-nota"><i class="fas fa-lightbulb"></i> <strong>Holgura:</strong> Actividades como pintura o empaque tienen holgura de hasta 5 días. El curado de resina es la actividad más sensible.</div>
+      <div class="btn-cpm">
+        <button id="btnVerCPM" class="btn-cpm-modal"><i class="fas fa-eye"></i> Ver diagrama CPM completo (con lupa)</button>
+      </div>
+    </section>
+
+    <!-- Distribución temporal por SOO -->
+    <section class="section-card">
+      <div class="section-title"><i class="fas fa-chart-column"></i> Distribución Temporal por Subobjetivo</div>
+      <div class="duracion-barras">
+        <div class="barra-soo"><span>SOO 1: Diseño</span><div class="barra" style="width: 13%">20 días</div></div>
+        <div class="barra-soo"><span>SOO 2: Recursos</span><div class="barra" style="width: 30%">45 días</div></div>
+        <div class="barra-soo"><span>SOO 3: Fabricación</span><div class="barra" style="width: 79%">120 días</div></div>
+        <div class="barra-soo"><span>SOO 4: Calidad</span><div class="barra" style="width: 7%">11 días</div></div>
+      </div>
+      <p class="total-dias"><i class="fas fa-calendar-alt"></i> Total: <strong>151 días hábiles</strong> (5 meses calendario)</p>
+    </section>
+
+    <footer>
+      <p>Universidad Mayor de San Andrés - Facultad de Ingeniería | IND 351 Administración Industrial</p>
+      <p>La Paz, Bolivia — 2026 | Planificación basada en CPM y Gantt</p>
+    </footer>
+  </main>
+
+  <!-- MODAL PARA IMAGEN CPM -->
+  <div id="modalCPM" class="modal">
+    <div class="modal-content">
+      <span class="close-modal">&times;</span>
+      <h3><i class="fas fa-diagram-project"></i> Diagrama de Ruta Crítica (CPM) - GeoWind Bolivia</h3>
+      <div class="zoom-controls">
+        <button id="zoomInBtn" class="zoom-btn"><i class="fas fa-search-plus"></i></button>
+        <button id="zoomOutBtn" class="zoom-btn"><i class="fas fa-search-minus"></i></button>
+        <button id="zoomResetBtn" class="zoom-btn"><i class="fas fa-undo-alt"></i></button>
+      </div>
+      <div class="modal-image-container" id="modalImageContainer">
+        <img id="cpmImage" src="imagencpm.JPG" alt="Diagrama CPM Proyecto GeoWind">
+      </div>
+      <p class="modal-nota">Haga clic en la imagen para alternar zoom rápido | Use botones +/- para ajustar</p>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+  <script>
+    // Modal CPM y zoom
+    const modal = document.getElementById('modalCPM');
+    const btn = document.getElementById('btnVerCPM');
+    const closeBtn = document.querySelector('.close-modal');
+    const modalImg = document.getElementById('cpmImage');
+    const container = document.getElementById('modalImageContainer');
+    let currentZoom = 1;
+
+    function openModal() {
+      modal.style.display = 'flex';
+      document.body.style.overflow = 'hidden';
+      resetZoom();
+    }
+    function closeModal() {
+      modal.style.display = 'none';
+      document.body.style.overflow = 'auto';
+    }
+    function resetZoom() {
+      currentZoom = 1;
+      modalImg.style.transform = `scale(${currentZoom})`;
+      modalImg.style.cursor = 'zoom-in';
+      container.style.overflow = 'auto';
+    }
+    function zoomIn() {
+      if (currentZoom < 2.5) {
+        currentZoom += 0.25;
+        modalImg.style.transform = `scale(${currentZoom})`;
+        if (currentZoom > 1) modalImg.style.cursor = 'zoom-out';
+        else modalImg.style.cursor = 'zoom-in';
+      }
+    }
+    function zoomOut() {
+      if (currentZoom > 0.6) {
+        currentZoom -= 0.25;
+        modalImg.style.transform = `scale(${currentZoom})`;
+        if (currentZoom <= 1) modalImg.style.cursor = 'zoom-in';
+        else modalImg.style.cursor = 'zoom-out';
+      }
+    }
+    // Toggle zoom rápido con clic en imagen
+    modalImg.addEventListener('click', () => {
+      if (currentZoom === 1) zoomIn();
+      else resetZoom();
+    });
+
+    if (btn) btn.addEventListener('click', openModal);
+    if (closeBtn) closeBtn.addEventListener('click', closeModal);
+    window.addEventListener('click', (e) => { if (e.target === modal) closeModal(); });
+    document.getElementById('zoomInBtn')?.addEventListener('click', zoomIn);
+    document.getElementById('zoomOutBtn')?.addEventListener('click', zoomOut);
+    document.getElementById('zoomResetBtn')?.addEventListener('click', resetZoom);
+
+    // Asegurar que la imagen exista, si no mostrar mensaje
+    modalImg.onerror = () => {
+      modalImg.src = 'https://placehold.co/1000x600/F4E3D0/E67E22?text=Diagrama+CPM+GeoWind+(imagen+no+encontrada)';
+      modalImg.alt = 'Diagrama CPM no disponible';
+    };
+  </script>
+</body>
+</html>

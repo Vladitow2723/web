@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>GeoWind Bolivia | ¿CON QUÉ? - Gestión de inventarios</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link rel="stylesheet" href="index.css">
+  <link rel="stylesheet" href="conque.css">
+</head>
+<body>
+
+  <button class="menu-toggle" id="menuToggleBtn"><i class="fas fa-bars"></i></button>
+
+  <div class="sidebar" id="sidebarMenu">
+    <div class="sidebar-header"><i class="fas fa-wind"></i><h3>GeoWind<br><span>IND 351</span></h3></div>
+    <nav class="sidebar-nav">
+      <a href="index.html" class="nav-link"><i class="fas fa-home"></i> Inicio</a>
+      <a href="que.html" class="nav-link"><i class="fas fa-question-circle"></i> ¿QUÉ?</a>
+      <a href="quien.html" class="nav-link"><i class="fas fa-users"></i> ¿QUIÉN?</a>
+      <a href="como.html" class="nav-link"><i class="fas fa-cogs"></i> ¿CÓMO?</a>
+      <a href="cuando.html" class="nav-link"><i class="fas fa-calendar-alt"></i> ¿CUÁNDO?</a>
+      <a href="donde.html" class="nav-link"><i class="fas fa-map-marker-alt"></i> ¿DÓNDE?</a>
+      <a href="conque.html" class="nav-link active"><i class="fas fa-tools"></i> ¿CON QUÉ?</a>
+      <a href="acosto.html" class="nav-link"><i class="fas fa-chart-line"></i> ¿A QUÉ COSTO?</a>
+    </nav>
+    <div class="sidebar-footer"><i class="fas fa-university"></i> UMSA - IND 351<br>Gestión 2026</div>
+  </div>
+  <div class="overlay" id="overlay"></div>
+
+  <main class="main-container">
+    <div class="hero">
+      <h1>🔧 ¿CON QUÉ? · Gestión de Inventarios y Materiales</h1>
+      <div class="badge-umsa"><i class="fas fa-crate-empty"></i> Materias primas, insumos, clasificación ABC, stocks y lote económico</div>
+    </div>
+
+    <!-- FUNDAMENTO TEÓRICO -->
+    <section class="section-card">
+      <div class="section-title"><i class="fas fa-graduation-cap"></i> Fundamento teórico (IND 351)</div>
+      <p>La pregunta <strong>¿CON QUÉ?</strong> responde a: <em>“¿Con qué recursos materiales y tecnológicos ejecutar las tareas para garantizar la continuidad operativa?”</em></p>
+      <p>Para asegurar que nunca falte material en la línea de producción, aplicamos técnicas de administración de inventarios:</p>
+      <ul>
+        <li><strong>Clasificación ABC</strong> (Principio de Pareto): priorizar esfuerzos en los pocos materiales que concentran el mayor valor.</li>
+        <li><strong>Stock de Seguridad (SS)</strong>: colchón para imprevistos (demoras de proveedores, variaciones de demanda).</li>
+        <li><strong>Punto de Pedido (PP)</strong>: nivel de inventario que dispara una nueva orden de compra.</li>
+        <li><strong>Lote Económico (Q*)</strong>: cantidad óptima a pedir que minimiza los costos totales de inventario.</li>
+      </ul>
+      <div class="formula-basica">
+        <p><strong>Fórmulas clave:</strong></p>
+        <ul>
+          <li><strong>Stock Seguridad (SS)</strong> = Consumo mensual × (Plazo seguridad / 30 días)</li>
+          <li><strong>Punto de Pedido (PP)</strong> = (Demanda diaria × Plazo entrega) + SS</li>
+          <li><strong>Lote Económico (Q*)</strong> = √(2 × D × S / H)</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- CLASIFICACIÓN ABC COMPLETA -->
+    <section class="section-card">
+      <div class="section-title"><i class="fas fa-chart-pie"></i> Clasificación ABC de materiales (Pareto)</div>
+      <div class="tabla-container">
+        <table class="abc-table">
+          <thead>
+            <tr><th>Material</th><th>Costo Total (Bs.)</th><th>% Valor</th><th>% Acum.</th><th>Clase</th><th>Gestión recomendada</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Fibra de carbono</td><td>750.000</td><td>23,4%</td><td>23,4%</td><td class="clase-a">A</td><td>Control diario, stock seguridad 30 días</td></tr>
+            <tr><td>Acero inoxidable 316</td><td>448.000</td><td>14,0%</td><td>37,4%</td><td class="clase-a">A</td><td>Control semanal, stock 15 días</td></tr>
+            <tr><td>Resina epóxica</td><td>412.500</td><td>12,9%</td><td>50,3%</td><td class="clase-a">A</td><td>Control diario, stock 20 días, vigilar vencimiento</td></tr>
+            <tr><td>Imanes permanentes</td><td>350.000</td><td>10,9%</td><td>61,2%</td><td class="clase-a">A</td><td>Control semanal, bajo llave</td></tr>
+            <tr><td>Controlador MPPT</td><td>350.000</td><td>10,9%</td><td>72,1%</td><td class="clase-b">B</td><td>Control quincenal</td></tr>
+            <tr><td>Rodamientos cerámicos</td><td>210.000</td><td>6,6%</td><td>78,7%</td><td class="clase-b">B</td><td>Control mensual</td></tr>
+            <tr><td>Cableado especial</td><td>150.000</td><td>4,7%</td><td>83,4%</td><td class="clase-b">B</td><td>Control mensual</td></tr>
+            <tr><td>Cobre para bobinado</td><td>135.000</td><td>4,2%</td><td>87,6%</td><td class="clase-b">B</td><td>Control quincenal</td></tr>
+            <tr><td>EPP operarios</td><td>100.000</td><td>3,1%</td><td>90,7%</td><td class="clase-c">C</td><td>Pedido grande, control simple</td></tr>
+            <tr><td>Material de empaque</td><td>80.000</td><td>2,5%</td><td>93,2%</td><td class="clase-c">C</td><td>Pedido grande, control simple</td></tr>
+            <tr><td>Repuestos maquinaria</td><td>50.000</td><td>1,6%</td><td>94,8%</td><td class="clase-c">C</td><td>Según necesidad</td></tr>
+            <tr><td>Insumos varios</td><td>165.000</td><td>5,2%</td><td>100,0%</td><td class="clase-c">C</td><td>Según necesidad</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="nota"><i class="fas fa-lightbulb"></i> <strong>Principio de Pareto:</strong> el 20% de los materiales (Clase A) concentran el 80% del valor invertido. Requieren control estricto.</p>
+    </section>
+
+    <!-- STOCK DE SEGURIDAD -->
+    <section class="section-card">
+      <div class="section-title"><i class="fas fa-shield-alt"></i> Stock de Seguridad (SS)</div>
+      <p>Es la cantidad mínima que debe existir en almacén para proteger la producción ante demoras imprevistas de los proveedores o picos de demanda.</p>
+      <div class="calculos-grid">
+        <div class="calc-card">
+          <h4><i class="fas fa-calculator"></i> Fórmula</h4>
+          <p>SS = Consumo mensual × (Plazo de seguridad en días / 30)</p>
+        </div>
+        <div class="calc-card">
+          <h4>Ejemplo (Fibra de carbono)</h4>
+          <p>Consumo mensual: 3.000 kg<br>Plazo seguridad: 30 días<br>SS = 3.000 × (30/30) = <strong>3.000 kg</strong></p>
+        </div>
+      </div>
+      <div class="tabla-container">
+        <table class="ss-table">
+          <thead><tr><th>Material Clase A</th><th>Consumo mensual</th><th>Plazo seguridad (días)</th><th>Stock de Seguridad</th></tr></thead>
+          <tbody>
+            <tr><td>Fibra de carbono</td><td>3.000 kg</td><td>30</td><td><strong>3.000 kg</strong></td></tr>
+            <tr><td>Acero inoxidable</td><td>4.000 kg</td><td>15</td><td><strong>2.000 kg</strong></td></tr>
+            <tr><td>Resina epóxica</td><td>2.500 kg</td><td>20</td><td><strong>1.667 kg</strong></td></tr>
+            <tr><td>Imanes permanentes</td><td>1.000 pza</td><td>30</td><td><strong>1.000 pza</strong></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- PUNTO DE PEDIDO -->
+    <section class="section-card">
+      <div class="section-title"><i class="fas fa-shopping-cart"></i> Punto de Pedido (PP)</div>
+      <p>Nivel de inventario que indica <strong>cuándo</strong> hacer un nuevo pedido para evitar que el stock llegue a cero antes de que llegue la mercancía.</p>
+      <div class="calculos-grid">
+        <div class="calc-card">
+          <h4>Fórmula</h4>
+          <p>PP = (Demanda diaria × Plazo de entrega) + Stock Seguridad</p>
+        </div>
+        <div class="calc-card">
+          <h4>Ejemplo (Fibra de carbono)</h4>
+          <p>Demanda diaria: 100 kg/día · Plazo entrega: 45 días · SS: 3.000 kg<br>PP = (100×45) + 3.000 = <strong>7.500 kg</strong></p>
+        </div>
+      </div>
+      <div class="tabla-container">
+        <table class="pp-table">
+          <thead><tr><th>Material</th><th>Demanda diaria</th><th>Plazo entrega (días)</th><th>Stock Seguridad</th><th>Punto de Pedido</th></tr></thead>
+          <tbody>
+            <tr><td>Fibra de carbono</td><td>100 kg</td><td>45</td><td>3.000 kg</td><td><strong>7.500 kg</strong></td></tr>
+            <tr><td>Acero inoxidable</td><td>133,3 kg</td><td>15</td><td>2.000 kg</td><td><strong>4.000 kg</strong></td></tr>
+            <tr><td>Resina epóxica</td><td>83,3 kg</td><td>45</td><td>1.667 kg</td><td><strong>5.416 kg</strong></td></tr>
+            <tr><td>Imanes permanentes</td><td>33,3 pza</td><td>60</td><td>1.000 pza</td><td><strong>3.000 pza</strong></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- LOTE ECONÓMICO (Q*) -->
+    <section class="section-card">
+      <div class="section-title"><i class="fas fa-chart-line"></i> Lote Económico de Compra (Q*) – Fórmula de Wilson</div>
+      <p>Es la cantidad óptima a pedir que minimiza los costos totales de inventario (costos de pedir + costos de almacenar).</p>
+      <div class="calculos-grid">
+        <div class="calc-card">
+          <h4>Fórmula de Wilson</h4>
+          <p>Q* = √(2 × D × S / H)</p>
+          <p>D = Demanda anual · S = Costo de pedido · H = Costo almacenamiento unitario/año</p>
+        </div>
+        <div class="calc-card">
+          <h4>Ejemplo (Fibra de carbono)</h4>
+          <p>D = 36.000 kg/año · S = 350 Bs · H = 37,5 Bs/kg·año<br>Q* = √(2×36.000×350 / 37,5) = <strong>820 kg</strong></p>
+        </div>
+      </div>
+      <div class="tabla-container">
+        <table class="qe-table">
+          <thead><tr><th>Material</th><th>Demanda anual (D)</th><th>Costo pedido (S)</th><th>Costo almacén (H)</th><th>Lote Económico (Q*)</th></tr></thead>
+          <tbody>
+            <tr><td>Fibra de carbono</td><td>36.000 kg</td><td>350 Bs</td><td>37,5 Bs/kg/año</td><td><strong>820 kg</strong></td></tr>
+            <tr><td>Acero inoxidable</td><td>48.000 kg</td><td>350 Bs</td><td>16,8 Bs/kg/año</td><td><strong>1.414 kg</strong></td></tr>
+            <tr><td>Resina epóxica</td><td>30.000 kg</td><td>350 Bs</td><td>24,75 Bs/kg/año</td><td><strong>921 kg</strong></td></tr>
+            <tr><td>Imanes permanentes</td><td>12.000 pza</td><td>350 Bs</td><td>52,5 Bs/pza/año</td><td><strong>400 pza</strong></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="btn-modelo-container">
+        <button id="btnMostrarSierra" class="btn-modelo"><i class="fas fa-chart-line"></i> Ver modelo "Diente de Sierra" (gestión de inventarios)</button>
+      </div>
+    </section>
+
+    <!-- MATERIAS PRIMAS Y EQUIPOS (secciones originales mejoradas) -->
+    <section class="section-card">
+      <div class="section-title"><i class="fas fa-cubes"></i> Materias primas e insumos críticos</div>
+      <div class="materiales-grid">
+        <div class="material-categoria"><h3><i class="fas fa-fan"></i> Aspas</h3><ul><li>Fibra de carbono (tejido bidireccional)</li><li>Resina epóxica</li><li>Agente desmoldante</li><li>Catalizador</li></ul></div>
+        <div class="material-categoria"><h3><i class="fas fa-weld"></i> Estructura</h3><ul><li>Acero inoxidable 316</li><li>Electrodos E6013, varilla TIG</li><li>Pintura epoxi anticorrosiva</li></ul></div>
+        <div class="material-categoria"><h3><i class="fas fa-microchip"></i> Eléctricos</h3><ul><li>Generador imanes 500W</li><li>Controlador MPPT</li><li>Sensores, cableado industrial</li></ul></div>
+        <div class="material-categoria"><h3><i class="fas fa-tools"></i> Insumos</h3><ul><li>Lijas, pintura poliuretánica</li><li>Empaque: cajas madera, plástico burbuja</li><li>Etiquetas QR</li></ul></div>
+      </div>
+    </section>
+
+    <section class="section-card">
+      <div class="section-title"><i class="fas fa-industry"></i> Equipos industriales</div>
+      <div class="equipos-grid">
+        <div class="equipo"><i class="fas fa-cutter"></i> Sierras CNC</div>
+        <div class="equipo"><i class="fas fa-fire"></i> Horno curado 0-200°C</div>
+        <div class="equipo"><i class="fas fa-wind"></i> Túnel de viento</div>
+        <div class="equipo"><i class="fas fa-wrench"></i> Máquinas TIG/MIG</div>
+        <div class="equipo"><i class="fas fa-paint-roller"></i> Cabina pintura</div>
+        <div class="equipo"><i class="fas fa-balance-scale"></i> Balanceo dinámico</div>
+        <div class="equipo"><i class="fas fa-microscope"></i> Microscopio inspección</div>
+        <div class="equipo"><i class="fas fa-multimeter"></i> Multímetros, osciloscopios</div>
+      </div>
+    </section>
+
+    <footer>
+      <p>Universidad Mayor de San Andrés - Facultad de Ingeniería | IND 351 Administración Industrial</p>
+      <p>La Paz, Bolivia — 2026 | Gestión de inventarios basada en NB/ISO 9001 y métodos cuantitativos</p>
+    </footer>
+  </main>
+
+  <!-- MODAL PARA LA IMAGEN SIERRA.JPG -->
+  <div id="modalSierra" class="modal">
+    <div class="modal-content">
+      <span class="close-modal">&times;</span>
+      <h3><i class="fas fa-chart-line"></i> Modelo Diente de Sierra – Control de inventarios</h3>
+      <div class="zoom-controls">
+        <button id="zoomInBtn" class="zoom-btn"><i class="fas fa-search-plus"></i></button>
+        <button id="zoomOutBtn" class="zoom-btn"><i class="fas fa-search-minus"></i></button>
+        <button id="zoomResetBtn" class="zoom-btn"><i class="fas fa-undo-alt"></i></button>
+      </div>
+      <div class="modal-image-container" id="modalImageContainer">
+        <img id="sierraImage" src="sierra.jpg" alt="Modelo Diente de Sierra - Inventario GeoWind">
+      </div>
+      <p class="modal-nota">Haga clic en la imagen para alternar zoom rápido | Use botones +/- para ajustar</p>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+  <script>
+    // Modal y zoom para imagen sierra.jpg
+    const modal = document.getElementById('modalSierra');
+    const btn = document.getElementById('btnMostrarSierra');
+    const closeBtn = document.querySelector('.close-modal');
+    const modalImg = document.getElementById('sierraImage');
+    const container = document.getElementById('modalImageContainer');
+    let currentZoom = 1;
+
+    function openModal() { modal.style.display = 'flex'; document.body.style.overflow = 'hidden'; resetZoom(); }
+    function closeModal() { modal.style.display = 'none'; document.body.style.overflow = 'auto'; }
+    function resetZoom() { currentZoom = 1; modalImg.style.transform = `scale(${currentZoom})`; modalImg.style.cursor = 'zoom-in'; }
+    function zoomIn() { if (currentZoom < 2.5) { currentZoom += 0.25; modalImg.style.transform = `scale(${currentZoom})`; modalImg.style.cursor = currentZoom > 1 ? 'zoom-out' : 'zoom-in'; } }
+    function zoomOut() { if (currentZoom > 0.6) { currentZoom -= 0.25; modalImg.style.transform = `scale(${currentZoom})`; modalImg.style.cursor = currentZoom <= 1 ? 'zoom-in' : 'zoom-out'; } }
+    modalImg.addEventListener('click', () => { if (currentZoom === 1) zoomIn(); else resetZoom(); });
+    if (btn) btn.addEventListener('click', openModal);
+    if (closeBtn) closeBtn.addEventListener('click', closeModal);
+    window.addEventListener('click', (e) => { if (e.target === modal) closeModal(); });
+    document.getElementById('zoomInBtn')?.addEventListener('click', zoomIn);
+    document.getElementById('zoomOutBtn')?.addEventListener('click', zoomOut);
+    document.getElementById('zoomResetBtn')?.addEventListener('click', resetZoom);
+    // Si la imagen no existe, mostrar placeholder
+    modalImg.onerror = () => { modalImg.src = 'https://placehold.co/1000x600/F4E3D0/E67E22?text=Modelo+Diente+de+Sierra+(imagen+no+encontrada)'; modalImg.alt = 'Imagen no disponible'; };
+  </script>
+</body>
+</html>

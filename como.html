@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>GeoWind Bolivia | ¿CÓMO? - Procesos y Procedimientos</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link rel="stylesheet" href="index.css">
+  <link rel="stylesheet" href="como.css">
+</head>
+<body>
+
+  <button class="menu-toggle" id="menuToggleBtn"><i class="fas fa-bars"></i></button>
+
+  <div class="sidebar" id="sidebarMenu">
+    <div class="sidebar-header"><i class="fas fa-wind"></i><h3>GeoWind<br><span>IND 351</span></h3></div>
+    <nav class="sidebar-nav">
+      <a href="index.html" class="nav-link"><i class="fas fa-home"></i> Inicio</a>
+      <a href="que.html" class="nav-link"><i class="fas fa-question-circle"></i> ¿QUÉ?</a>
+      <a href="quien.html" class="nav-link"><i class="fas fa-users"></i> ¿QUIÉN?</a>
+      <a href="como.html" class="nav-link active"><i class="fas fa-cogs"></i> ¿CÓMO?</a>
+      <a href="cuando.html" class="nav-link"><i class="fas fa-calendar-alt"></i> ¿CUÁNDO?</a>
+      <a href="donde.html" class="nav-link"><i class="fas fa-map-marker-alt"></i> ¿DÓNDE?</a>
+      <a href="conque.html" class="nav-link"><i class="fas fa-tools"></i> ¿CON QUÉ?</a>
+      <a href="acosto.html" class="nav-link"><i class="fas fa-chart-line"></i> ¿A QUÉ COSTO?</a>
+    </nav>
+    <div class="sidebar-footer"><i class="fas fa-university"></i> UMSA - IND 351<br>Gestión 2026</div>
+  </div>
+  <div class="overlay" id="overlay"></div>
+
+  <main class="main-container">
+    <div class="hero">
+      <h1>⚙️ ¿CÓMO? · Procesos, Procedimientos y KPIs</h1>
+      <div class="badge-umsa"><i class="fas fa-microchip"></i> Metodología ISO 9001 + IND 351</div>
+    </div>
+
+    <!-- Tipos de procesos -->
+    <section class="section-card">
+      <div class="section-title"><i class="fas fa-chart-pie"></i> Clasificación de Procesos (ISO 9001)</div>
+      <div class="procesos-tipos">
+        <div class="proceso-card estrategico">
+          <i class="fas fa-flag-checkered"></i>
+          <h3>Estratégicos</h3>
+          <p>Planificación de metas de producción, política de calidad, política financiera, planificación administrativa.</p>
+        </div>
+        <div class="proceso-card valor">
+          <i class="fas fa-industry"></i>
+          <h3>Agregación de Valor</h3>
+          <p>Preparación de materiales (resina, fibra), fabricación de aspas, estructura, ensamblaje, acabado superficial, almacenaje.</p>
+        </div>
+        <div class="proceso-card apoyo">
+          <i class="fas fa-handshake"></i>
+          <h3>Apoyo</h3>
+          <p>RR.HH., mantenimiento de equipos, control y aseguramiento de calidad, compras, ventas y marketing.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Clasificación de tiempos y fórmula de procesamiento -->
+    <section class="section-card">
+      <div class="section-title"><i class="fas fa-hourglass-half"></i> Clasificación de Tiempos (IND 351)</div>
+      <div class="tiempos-grid">
+        <div class="tiempo-item"><strong>Teq</strong> Tiempo de equipamiento (preparación)</div>
+        <div class="tiempo-item"><strong>Tpu</strong> Tiempo de procesamiento unitario</div>
+        <div class="tiempo-item"><strong>Q</strong> Cantidad a procesar</div>
+        <div class="tiempo-item"><strong>Ttr</strong> Tiempo de transición / demora</div>
+        <div class="tiempo-item"><strong>Ttpr</strong> Tiempo total de procesamiento</div>
+      </div>
+      <div class="formula-box">
+        <p><strong>Fórmula general:</strong> Ttpr = Teq + (Tpu × Q) + Ttr</p>
+      </div>
+    </section>
+
+    <!-- Evolución del proceso productivo -->
+    <section class="section-card">
+      <div class="section-title"><i class="fas fa-chart-line"></i> Evolución del Proceso Industrial</div>
+      <div class="evolucion">
+        <span>Estado 1<br>Materia Prima</span> <i class="fas fa-arrow-right"></i>
+        <span>Estado 2<br>Producto Intermedio</span> <i class="fas fa-arrow-right"></i>
+        <span>Estado 3<br>Producto Semi-terminado</span> <i class="fas fa-arrow-right"></i>
+        <span>Estado 4<br>Producto Terminado</span>
+      </div>
+      <div class="ejemplo-evolucion">
+        <p><strong>Ejemplo concreto:</strong> Fibra de carbono + resina → Corte → Moldeado → Curado → Aspa terminada</p>
+        <p><strong>Flujo general:</strong> Tarea 3.1 (Corte) → Tarea 3.2-3.4 (Ensamble) → Tarea 3.5-3.6 (Acabado)</p>
+      </div>
+    </section>
+
+    <!-- Procedimientos Operativos Estándar (SOP) -->
+    <section class="section-card">
+      <div class="section-title"><i class="fas fa-file-alt"></i> Procedimientos Operativos Estándar (SOP)</div>
+      
+      <div class="sop">
+        <h3><i class="fas fa-fan"></i> SOP-001: Fabricación de Aspas en Composite</h3>
+        <p><strong>Responsable:</strong> Técnico en Composites | <strong>Tiempo total:</strong> 25.75 horas/lote de 33 aspas</p>
+        <div class="pasos">
+          <div>1. Limpiar molde (5 min)</div><div>2. Cortar fibra (15 min)</div><div>3. Mezclar resina (10 min)</div>
+          <div>4. Aplicar resina (20 min)</div><div>5. Cerrar molde (10 min)</div><div>6. Curar 24h (1440 min)</div>
+          <div>7. Desmoldar (30 min)</div><div>8. Inspeccionar (15 min)</div>
+        </div>
+        <p class="control-calidad"><i class="fas fa-check-double"></i> Control: ausencia de burbujas, espesor ±0.5mm</p>
+      </div>
+
+      <div class="sop">
+        <h3><i class="fas fa-weld"></i> SOP-002: Soldadura de Estructura de Acero</h3>
+        <p><strong>Responsable:</strong> Soldador Certificado | <strong>Tiempo total:</strong> 135 min por estructura</p>
+        <div class="pasos">
+          <div>1. Limpiar superficies (5 min)</div><div>2. Posicionar tubos (10 min)</div><div>3. Ajustar parámetros (5 min)</div>
+          <div>4. Soldadura puntos (15 min)</div><div>5. Verificar alineación (5 min)</div><div>6. Completar cordones (60 min)</div>
+          <div>7. Limpiar escoria (20 min)</div><div>8. Inspeccionar (15 min)</div>
+        </div>
+        <p class="control-calidad"><i class="fas fa-check-double"></i> Control: sin poros, penetración completa, sin grietas</p>
+      </div>
+
+      <div class="sop">
+        <h3><i class="fas fa-microphone-alt"></i> SOP-003: Pruebas de Funcionamiento</h3>
+        <p><strong>Responsable:</strong> Inspector de Calidad | <strong>Tiempo total:</strong> 85 min por unidad</p>
+        <div class="pasos">
+          <div>1. Instalar turbina (15 min)</div><div>2. Conectar instrumentos (10 min)</div><div>3. Flujo 3 m/s (5 min)</div>
+          <div>4. Medir RPM (10 min)</div><div>5. Flujo 6 m/s (5 min)</div><div>6. Medir potencia 500W (10 min)</div>
+          <div>7. Flujo 15 m/s (5 min)</div><div>8. Verificar estabilidad (10 min)</div><div>9. Flujo 20 m/s (5 min)</div>
+          <div>10. Inspeccionar (10 min)</div>
+        </div>
+        <p class="control-calidad"><i class="fas fa-check-double"></i> Criterio: 500W @ 6 m/s, sin vibraciones excesivas</p>
+      </div>
+    </section>
+
+    <!-- Matriz de Procesos Críticos (ampliada) -->
+    <section class="section-card">
+      <div class="section-title"><i class="fas fa-exclamation-triangle"></i> Matriz de Procesos Críticos</div>
+      <div class="tabla-container">
+        <table class="critica-tabla">
+          <thead><tr><th>Código</th><th>Proceso</th><th>Impacto</th><th>Riesgo</th><th>Medida de Control</th></tr></thead>
+          <tbody>
+            <tr><td>P-01</td><td>Curado de resina epóxica</td><td>Alto</td><td>Alto</td><td>Control temp. ±2°C, tiempo exacto 24h</td></tr>
+            <tr><td>P-02</td><td>Soldadura TIG</td><td>Alto</td><td>Medio</td><td>Soldador certificado, inspección líquido penetrante</td></tr>
+            <tr><td>P-03</td><td>Balanceo dinámico del rotor</td><td>Alto</td><td>Alto</td><td>Equipo calibrado, tolerancia <0.5mm</td></tr>
+            <tr><td>P-04</td><td>Instalación eléctrica</td><td>Alto</td><td>Alto</td><td>Electricista certificado, prueba aislamiento</td></tr>
+            <tr><td>P-05</td><td>Prueba en túnel de viento</td><td>Alto</td><td>Medio</td><td>Protocolo estandarizado, registro de datos</td></tr>
+            <tr><td>P-06</td><td>Aplicación de pintura</td><td>Medio</td><td>Bajo</td><td>Cabina con control de polvo, 2 capas mínimas</td></tr>
+            <tr><td>P-07</td><td>Ensamble final</td><td>Alto</td><td>Medio</td><td>Checklist de 25 puntos, torque especificado</td></tr>
+            <tr><td>P-08</td><td>Empaque y etiquetado</td><td>Bajo</td><td>Bajo</td><td>Verificación de código QR y número de serie</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- KPIs con diseño mejorado -->
+    <section class="section-card">
+      <div class="section-title"><i class="fas fa-chart-simple"></i> Indicadores Clave de Desempeño (KPIs)</div>
+      <div class="kpi-grid">
+        <div class="kpi-card">
+          <div class="kpi-icon"><i class="fas fa-percent"></i></div>
+          <div class="kpi-info"><h4>Eficiencia de producción</h4><div class="kpi-meta">Meta: >95%</div><small>Medición semanal</small></div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-icon"><i class="fas fa-bug"></i></div>
+          <div class="kpi-info"><h4>Tasa de defectos</h4><div class="kpi-meta">Meta: &lt;2%</div><small>Por lote</small></div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-icon"><i class="fas fa-calendar-check"></i></div>
+          <div class="kpi-info"><h4>Cumplimiento de cronograma</h4><div class="kpi-meta">Meta: 100%</div><small>Semanal</small></div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-icon"><i class="fas fa-microchip"></i></div>
+          <div class="kpi-info"><h4>Disponibilidad de equipos</h4><div class="kpi-meta">Meta: >95%</div><small>Diario</small></div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-icon"><i class="fas fa-chart-line"></i></div>
+          <div class="kpi-info"><h4>Productividad</h4><div class="kpi-meta">Meta: >0.15 GeoWind/h-h</div><small>Semanal</small></div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-icon"><i class="fas fa-trash-alt"></i></div>
+          <div class="kpi-info"><h4>Scrap de materiales</h4><div class="kpi-meta">Meta: &lt;3%</div><small>Semanal</small></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Función socioeconómica -->
+    <section class="section-card">
+      <div class="section-title"><i class="fas fa-globe-americas"></i> Función Socioeconómica del Proceso Industrial</div>
+      <p class="socioeconomico">Desarrollo tecnológico constante = nuevos desafíos = superación personal.<br>Aporte de conocimiento científico y tecnológico con criterio gerencial para Bolivia.</p>
+    </section>
+
+    <!-- RECURSOS MULTIMEDIA Y REFERENCIAS -->
+    <section class="section-card">
+      <div class="section-title"><i class="fas fa-video"></i> Recursos Multimedia y Referencias</div>
+      <div class="videos-grid">
+        <div class="video-item">
+          <iframe src="https://www.youtube.com/embed/A8aR1r-4Yho" title="Fabricación de composites" frameborder="0" allowfullscreen></iframe>
+          <p>🎬 Fabricación de aspas en composite (referencia técnica)</p>
+        </div>
+        <div class="video-item">
+          <iframe src="https://www.youtube.com/embed/dZ3I8ZzL5b0" title="Soldadura TIG" frameborder="0" allowfullscreen></iframe>
+          <p>⚡ Soldadura TIG de estructura metálica</p>
+        </div>
+        <div class="video-item">
+          <iframe src="https://www.youtube.com/embed/Hv6jWHZwFq8" title="Pruebas túnel de viento" frameborder="0" allowfullscreen></iframe>
+          <p>🌬️ Pruebas en túnel de viento para aerogeneradores</p>
+        </div>
+        <div class="video-item">
+          <iframe src="https://www.youtube.com/embed/9nWcFZ5cJAg" title="Gestión de calidad ISO 9001" frameborder="0" allowfullscreen></iframe>
+          <p>📋 Implementación de ISO 9001 en procesos industriales</p>
+        </div>
+      </div>
+      <div class="referencias">
+        <h3><i class="fas fa-book"></i> Referencias bibliográficas y enlaces de interés</h3>
+        <ul>
+          <li>Sánchez Guzmán, J. E. (2022). <em>IND 351 Administración Industrial - Conceptos Iniciales</em>. UMSA.</li>
+          <li>NB/ISO 9001:2015. <em>Sistemas de Gestión de la Calidad</em>. IBNORCA.</li>
+          <li>Project Management Institute (2021). <em>PMBOK Guide</em>.</li>
+          <li><a href="https://www.youtube.com/watch?v=A8aR1r-4Yho" target="_blank">Video: Fabricación de piezas de carbono</a></li>
+          <li><a href="https://www.youtube.com/watch?v=dZ3I8ZzL5b0" target="_blank">Video: Curso de soldadura TIG</a></li>
+          <li><a href="https://www.youtube.com/watch?v=Hv6jWHZwFq8" target="_blank">Video: Pruebas de túnel de viento</a></li>
+        </ul>
+      </div>
+    </section>
+
+    <footer>
+      <p>Universidad Mayor de San Andrés - Facultad de Ingeniería | IND 351 Administración Industrial</p>
+      <p>La Paz, Bolivia — 2026 | Basado en NB/ISO 9001, DS 28382, Ley 1333</p>
+    </footer>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

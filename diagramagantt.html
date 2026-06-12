@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>GeoWind Bolivia | Diagrama de Gantt Detallado</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link rel="stylesheet" href="index.css">
+  <link rel="stylesheet" href="gantt.css">
+  <!-- SheetJS para exportar Excel -->
+  <script src="https://cdn.sheetjs.com/xlsx-0.20.2/package/dist/xlsx.full.min.js"></script>
+</head>
+<body>
+
+  <button class="menu-toggle" id="menuToggleBtn"><i class="fas fa-bars"></i></button>
+
+  <div class="sidebar" id="sidebarMenu">
+    <div class="sidebar-header"><i class="fas fa-wind"></i><h3>GeoWind<br><span>IND 351</span></h3></div>
+    <nav class="sidebar-nav">
+      <a href="index.html" class="nav-link"><i class="fas fa-home"></i> Inicio</a>
+      <a href="que.html" class="nav-link"><i class="fas fa-question-circle"></i> ¿QUÉ?</a>
+      <a href="quien.html" class="nav-link"><i class="fas fa-users"></i> ¿QUIÉN?</a>
+      <a href="como.html" class="nav-link"><i class="fas fa-cogs"></i> ¿CÓMO?</a>
+      <a href="cuando.html" class="nav-link"><i class="fas fa-calendar-alt"></i> ¿CUÁNDO?</a>
+      <a href="donde.html" class="nav-link"><i class="fas fa-map-marker-alt"></i> ¿DÓNDE?</a>
+      <a href="conque.html" class="nav-link"><i class="fas fa-tools"></i> ¿CON QUÉ?</a>
+      <a href="acosto.html" class="nav-link"><i class="fas fa-chart-line"></i> ¿A QUÉ COSTO?</a>
+    </nav>
+    <div class="sidebar-footer"><i class="fas fa-university"></i> UMSA - IND 351<br>Gestión 2026</div>
+  </div>
+  <div class="overlay" id="overlay"></div>
+
+  <main class="main-container">
+    <div class="hero">
+      <h1>📊 Diagrama de Gantt Detallado</h1>
+      <div class="badge-umsa"><i class="fas fa-chart-gantt"></i> Planificación operativa – 151 días · 51 tareas</div>
+    </div>
+
+    <!-- Barra de herramientas -->
+    <div class="toolbar">
+      <button id="exportExcelBtn" class="tool-btn"><i class="fas fa-file-excel"></i> Exportar a Excel (con notas y Gantt)</button>
+      <button id="resetNotesBtn" class="tool-btn reset"><i class="fas fa-undo-alt"></i> Reiniciar notas</button>
+      <div class="leyenda-gantt">
+        <span><i class="fas fa-square" style="color:#2A9D8F;"></i> Diseño</span>
+        <span><i class="fas fa-square" style="color:#E67E22;"></i> Recursos</span>
+        <span><i class="fas fa-square" style="color:#8B5A2B;"></i> Fabricación</span>
+        <span><i class="fas fa-square" style="color:#D45A1A;"></i> Calidad</span>
+        <span><i class="fas fa-grip-lines-vertical"></i> Ruta crítica</span>
+      </div>
+    </div>
+
+    <!-- Contenedor del diagrama de Gantt (dibujado con Grid) -->
+    <div class="gantt-detalle-container" id="ganttContainer">
+      <!-- Se llena con JavaScript -->
+    </div>
+
+    <!-- Sección de notas (debajo del Gantt) -->
+    <div class="notas-section">
+      <h3><i class="fas fa-sticky-note"></i> Notas por tarea</h3>
+      <div id="notasContainer" class="notas-grid"></div>
+    </div>
+
+    <footer>
+      <p>Universidad Mayor de San Andrés - Facultad de Ingeniería | IND 351 Administración Industrial</p>
+      <p>La Paz, Bolivia — 2026 | Cronograma basado en CPM y datos operativos</p>
+    </footer>
+  </main>
+
+  <script src="script.js"></script>
+  <script>
+    // --------------------------------------------------------------
+    // 1. DEFINICIÓN DE TAREAS (basada en documento y tabla imagen)
+    // --------------------------------------------------------------
+    const tasks = [
+      // FASE DISEÑO (Días 1-20 aprox)
+      { id: "1.1", name: "Establecer parámetros de diseño", phase: "Diseño", start: 1, duration: 5, predecessors: [], critical: true },
+      { id: "1.2", name: "Memorias de cálculo estructural", phase: "Diseño", start: 6, duration: 7, predecessors: ["1.1"], critical: true },
+      { id: "1.3", name: "Dibujar planos CAD 3D", phase: "Diseño", start: 13, duration: 6, predecessors: ["1.2"], critical: true },
+      { id: "1.4", name: "Elaborar listas de componentes (BOM)", phase: "Diseño", start: 19, duration: 3, predecessors: ["1.3"], critical: false },
+      { id: "1.5", name: "Elaborar planes de montaje", phase: "Diseño", start: 22, duration: 4, predecessors: ["1.4"], critical: false },
+      { id: "1.6", name: "Certificación ingeniero colegiado", phase: "Diseño", start: 26, duration: 5, predecessors: ["1.5"], critical: true },
+      { id: "1.7", name: "Registro en SENAPI", phase: "Diseño", start: 31, duration: 10, predecessors: ["1.6"], critical: false },
+      
+      // FASE RECURSOS (Días 1-45, algunas paralelas)
+      { id: "2.1.1", name: "Alquilar/adecuar nave industrial", phase: "Recursos", start: 1, duration: 15, predecessors: [], critical: true },
+      { id: "2.1.2", name: "Instalar servicios (trifásico, agua, aire)", phase: "Recursos", start: 16, duration: 10, predecessors: ["2.1.1"], critical: false },
+      { id: "2.2.1", name: "Comprar/instalar maquinaria", phase: "Recursos", start: 26, duration: 20, predecessors: ["2.1.2"], critical: false },
+      { id: "2.2.2", name: "Calibrar equipos", phase: "Recursos", start: 46, duration: 5, predecessors: ["2.2.1"], critical: false },
+      { id: "2.3.1", name: "Publicar convocatorias y entrevistas", phase: "Recursos", start: 1, duration: 10, predecessors: [], critical: false },
+      { id: "2.3.2", name: "Contratar y registrar personal", phase: "Recursos", start: 11, duration: 5, predecessors: ["2.3.1"], critical: false },
+      { id: "2.3.3", name: "Capacitación inicial", phase: "Recursos", start: 16, duration: 5, predecessors: ["2.3.2"], critical: false },
+      { id: "2.4.1", name: "Presentar proyecto a banco", phase: "Recursos", start: 1, duration: 15, predecessors: [], critical: false },
+      { id: "2.4.2", name: "Firmar contrato y desembolso", phase: "Recursos", start: 16, duration: 10, predecessors: ["2.4.1"], critical: false },
+      { id: "2.5.1", name: "Cotizar con proveedores", phase: "Recursos", start: 26, duration: 10, predecessors: ["2.4.2"], critical: true },
+      { id: "2.5.2", name: "Realizar pedidos materiales Clase A", phase: "Recursos", start: 36, duration: 5, predecessors: ["2.5.1"], critical: true },
+      { id: "2.5.3", name: "Recepcionar y almacenar materiales", phase: "Recursos", start: 41, duration: 5, predecessors: ["2.5.2"], critical: true },
+      
+      // FASE FABRICACIÓN (Días 21-140)
+      { id: "3.1.1", name: "Preparar moldes de aspas", phase: "Fabricación", start: 46, duration: 2, predecessors: ["2.5.3"], critical: true },
+      { id: "3.1.2", name: "Cortar fibra de carbono", phase: "Fabricación", start: 48, duration: 3, predecessors: ["3.1.1"], critical: true },
+      { id: "3.1.3", name: "Aplicar resina epóxica", phase: "Fabricación", start: 51, duration: 2, predecessors: ["3.1.2"], critical: true },
+      { id: "3.1.4", name: "Curado en horno (24h/lote)", phase: "Fabricación", start: 53, duration: 90, predecessors: ["3.1.3"], critical: true },
+      { id: "3.1.5", name: "Desmoldar y lijar", phase: "Fabricación", start: 143, duration: 5, predecessors: ["3.1.4"], critical: false },
+      { id: "3.2.1", name: "Cortar tubos de acero inoxidable", phase: "Fabricación", start: 46, duration: 10, predecessors: ["2.5.3"], critical: true },
+      { id: "3.2.2", name: "Soldar estructura (TIG)", phase: "Fabricación", start: 56, duration: 15, predecessors: ["3.2.1"], critical: true },
+      { id: "3.2.3", name: "Tratamiento anticorrosivo", phase: "Fabricación", start: 71, duration: 5, predecessors: ["3.2.2"], critical: false },
+      { id: "3.3.1", name: "Montar generador", phase: "Fabricación", start: 148, duration: 10, predecessors: ["3.1.5","3.2.3"], critical: true },
+      { id: "3.3.2", name: "Instalar controlador MPPT", phase: "Fabricación", start: 158, duration: 8, predecessors: ["3.3.1"], critical: false },
+      { id: "3.3.3", name: "Cableado eléctrico", phase: "Fabricación", start: 166, duration: 7, predecessors: ["3.3.2"], critical: false },
+      { id: "3.3.4", name: "Instalar sensores", phase: "Fabricación", start: 173, duration: 5, predecessors: ["3.3.3"], critical: false },
+      { id: "3.4.1", name: "Unir aspas con rotor", phase: "Fabricación", start: 178, duration: 10, predecessors: ["3.3.4"], critical: true },
+      { id: "3.4.2", name: "Balanceo dinámico", phase: "Fabricación", start: 188, duration: 5, predecessors: ["3.4.1"], critical: true },
+      { id: "3.4.3", name: "Instalar base y anclaje", phase: "Fabricación", start: 193, duration: 8, predecessors: ["3.4.2"], critical: false },
+      { id: "3.5.1", name: "Lijado final", phase: "Fabricación", start: 201, duration: 5, predecessors: ["3.4.3"], critical: false },
+      { id: "3.5.2", name: "Aplicar pintura (2 capas)", phase: "Fabricación", start: 206, duration: 7, predecessors: ["3.5.1"], critical: false },
+      { id: "3.5.3", name: "Secado controlado", phase: "Fabricación", start: 213, duration: 4, predecessors: ["3.5.2"], critical: false },
+      { id: "3.6.1", name: "Empaque individual", phase: "Fabricación", start: 217, duration: 5, predecessors: ["3.5.3"], critical: false },
+      { id: "3.6.2", name: "Etiquetado (QR, serie, garantía)", phase: "Fabricación", start: 222, duration: 3, predecessors: ["3.6.1"], critical: false },
+      
+      // FASE CALIDAD (Días 141-151, pero por dependencias reales se ubica después)
+      { id: "4.1.1", name: "Prueba en túnel de viento", phase: "Calidad", start: 225, duration: 5, predecessors: ["3.6.2"], critical: true },
+      { id: "4.1.2", name: "Prueba generación eléctrica", phase: "Calidad", start: 230, duration: 3, predecessors: ["4.1.1"], critical: false },
+      { id: "4.1.3", name: "Prueba resistencia estructural", phase: "Calidad", start: 233, duration: 4, predecessors: ["4.1.2"], critical: false },
+      { id: "4.2.1", name: "Verificación visual", phase: "Calidad", start: 237, duration: 3, predecessors: ["4.1.3"], critical: false },
+      { id: "4.2.2", name: "Verificación dimensional", phase: "Calidad", start: 240, duration: 2, predecessors: ["4.2.1"], critical: false },
+      { id: "4.2.3", name: "Verificación eléctrica", phase: "Calidad", start: 242, duration: 2, predecessors: ["4.2.2"], critical: false },
+      { id: "4.3.1", name: "Emitir certificado de calidad", phase: "Calidad", start: 244, duration: 3, predecessors: ["4.2.3"], critical: false },
+      { id: "4.3.2", name: "Aprobación ENDE", phase: "Calidad", start: 247, duration: 10, predecessors: ["4.3.1"], critical: true },
+      { id: "4.3.3", name: "Manual de usuario (3 idiomas)", phase: "Calidad", start: 257, duration: 5, predecessors: ["4.3.2"], critical: false },
+      { id: "4.3.4", name: "Registrar garantía 2 años", phase: "Calidad", start: 262, duration: 3, predecessors: ["4.3.3"], critical: false }
+    ];
+
+    // Calcular días totales (máximo fin)
+    const maxEnd = Math.max(...tasks.map(t => t.start + t.duration - 1));
+    const totalDays = maxEnd;
+    // Mostrar semanas (escala de 5 días)
+    const weeks = Math.ceil(totalDays / 5);
+
+    // Obtener color según fase
+    function getPhaseColor(phase) {
+      switch(phase) {
+        case 'Diseño': return '#2A9D8F';
+        case 'Recursos': return '#E67E22';
+        case 'Fabricación': return '#8B5A2B';
+        case 'Calidad': return '#D45A1A';
+        default: return '#E67E22';
+      }
+    }
+
+    // Estado de notas (almacenar en localStorage)
+    let notes = JSON.parse(localStorage.getItem('geoWindGanttNotes')) || {};
+    tasks.forEach(t => { if (notes[t.id] === undefined) notes[t.id] = ''; });
+    function saveNotes() {
+      localStorage.setItem('geoWindGanttNotes', JSON.stringify(notes));
+    }
+
+    // Renderizar el diagrama de Gantt (Grid de columnas por día)
+    function renderGantt() {
+      const container = document.getElementById('ganttContainer');
+      if (!container) return;
+      
+      // Crear tabla: filas = tareas, columnas = días (1 a totalDays)
+      let html = '<div class="gantt-scroll-wrapper"><div class="gantt-timeline" style="grid-template-columns: 280px repeat(' + totalDays + ', minmax(30px, 1fr));">';
+      // Cabecera con semanas/días
+      html += '<div class="gantt-header-cell">Tarea / Actividad</div>';
+      for (let d = 1; d <= totalDays; d++) {
+        let label = '';
+        if (d % 5 === 1 || d === 1) label = `Sem ${Math.ceil(d/5)}<br>Día ${d}`;
+        else if (d % 5 === 0) label = `Día ${d}`;
+        else label = '';
+        html += `<div class="gantt-day-header" style="grid-column: span 1;">${label}</div>`;
+      }
+      
+      // Filas de tareas
+      tasks.forEach(task => {
+        const color = getPhaseColor(task.phase);
+        const isCritical = task.critical;
+        html += `<div class="gantt-row">
+                   <div class="gantt-task-name ${isCritical ? 'critical-task' : ''}">
+                     <span class="task-code">${task.id}</span> ${task.name}
+                   </div>`;
+        for (let d = 1; d <= totalDays; d++) {
+          let cellClass = 'gantt-cell';
+          let content = '';
+          if (d >= task.start && d < task.start + task.duration) {
+            cellClass += ' gantt-bar-cell';
+            const width = task.duration;
+            const leftOffset = d - task.start;
+            if (leftOffset === 0) {
+              content = `<div class="gantt-bar" style="background:${color}; width:calc(${width} * 100% - 2px);">${task.duration > 3 ? task.duration+'d' : ''}</div>`;
+            }
+          }
+          html += `<div class="${cellClass}">${content}</div>`;
+        }
+        html += `</div>`;
+      });
+      html += '</div></div>';
+      container.innerHTML = html;
+    }
+
+    // Renderizar notas (cada tarea con su campo de texto)
+    function renderNotes() {
+      const notesContainer = document.getElementById('notasContainer');
+      if (!notesContainer) return;
+      let html = '';
+      tasks.forEach(task => {
+        html += `
+          <div class="nota-card">
+            <div class="nota-header">
+              <strong><span class="task-id">${task.id}</span> ${task.name}</strong>
+              <span class="task-phase" style="background:${getPhaseColor(task.phase)};">${task.phase}</span>
+            </div>
+            <textarea class="nota-textarea" data-task-id="${task.id}" placeholder="Añadir nota sobre esta tarea...">${escapeHtml(notes[task.id] || '')}</textarea>
+          </div>
+        `;
+      });
+      notesContainer.innerHTML = html;
+      
+      // Agregar event listeners para guardar al escribir
+      document.querySelectorAll('.nota-textarea').forEach(textarea => {
+        textarea.addEventListener('input', (e) => {
+          const taskId = e.target.getAttribute('data-task-id');
+          notes[taskId] = e.target.value;
+          saveNotes();
+        });
+      });
+    }
+
+    // Utilidad para escapar HTML
+    function escapeHtml(str) {
+      if (!str) return '';
+      return str.replace(/[&<>]/g, function(m) {
+        if (m === '&') return '&amp;';
+        if (m === '<') return '&lt;';
+        if (m === '>') return '&gt;';
+        return m;
+      }).replace(/[\uD800-\uDBFF][\uDC00-\uDFFF]/g, function(c) {
+        return c;
+      });
+    }
+
+    // Exportar a Excel: incluye hoja de tareas con notas y una representación del Gantt como texto
+    function exportToExcel() {
+      // Datos para la hoja de tareas
+      const taskData = tasks.map(t => ({
+        'Código': t.id,
+        'Tarea': t.name,
+        'Fase': t.phase,
+        'Día Inicio': t.start,
+        'Duración (días)': t.duration,
+        'Día Fin': t.start + t.duration - 1,
+        'Ruta Crítica': t.critical ? 'Sí' : 'No',
+        'Nota': notes[t.id] || ''
+      }));
+      
+      // Crear hoja de tareas
+      const wsTasks = XLSX.utils.json_to_sheet(taskData);
+      wsTasks['!cols'] = [{wch:10},{wch:40},{wch:12},{wch:10},{wch:12},{wch:10},{wch:12},{wch:50}];
+      
+      // Crear hoja de resumen Gantt (representación textual)
+      const ganttRows = [];
+      ganttRows.push(['DIAGRAMA DE GANTT - PROYECTO GEOWIND']);
+      ganttRows.push(['Fecha generación:', new Date().toLocaleString()]);
+      ganttRows.push([]);
+      // Cabecera de días (simplificada)
+      let header = ['Tarea / Código'];
+      for (let d = 1; d <= totalDays; d+=5) {
+        header.push(`Sem ${Math.ceil(d/5)} (Días ${d}-${Math.min(d+4,totalDays)})`);
+      }
+      ganttRows.push(header);
+      // Filas de tareas con representación de barras (caracteres)
+      tasks.forEach(t => {
+        let row = [`${t.id} - ${t.name.substring(0,40)}`];
+        for (let week = 1; week <= weeks; week++) {
+          const weekStart = (week-1)*5 + 1;
+          const weekEnd = Math.min(week*5, totalDays);
+          let hasTask = false;
+          let bar = '';
+          for (let d = weekStart; d <= weekEnd; d++) {
+            if (d >= t.start && d < t.start + t.duration) {
+              hasTask = true;
+              bar += '█';
+            } else {
+              bar += '░';
+            }
+          }
+          row.push(hasTask ? bar : '');
+        }
+        ganttRows.push(row);
+      });
+      const wsGantt = XLSX.utils.aoa_to_sheet(ganttRows);
+      
+      // Crear libro y guardar
+      const wb = XLSX.utils.book_new();
+      XLSX.utils.book_append_sheet(wb, wsTasks, 'Tareas y Notas');
+      XLSX.utils.book_append_sheet(wb, wsGantt, 'Diagrama Gantt');
+      XLSX.writeFile(wb, `GeoWind_Gantt_${new Date().toISOString().slice(0,19)}.xlsx`);
+    }
+    
+    // Reiniciar notas
+    function resetNotes() {
+      if (confirm('¿Reiniciar todas las notas? Se perderán los comentarios actuales.')) {
+        tasks.forEach(t => { notes[t.id] = ''; });
+        saveNotes();
+        renderNotes();
+      }
+    }
+    
+    // Inicializar
+    document.addEventListener('DOMContentLoaded', () => {
+      renderGantt();
+      renderNotes();
+      document.getElementById('exportExcelBtn')?.addEventListener('click', exportToExcel);
+      document.getElementById('resetNotesBtn')?.addEventListener('click', resetNotes);
+    });
+  </script>
+</body>
+</html>

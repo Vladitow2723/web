@@ -1,0 +1,148 @@
+/* Estilos específicos para la página ¿QUÉ? */
+
+.objetivo-text {
+  font-size: 1.2rem;
+  background: #FEF5E8;
+  padding: 1.5rem;
+  border-radius: 1.5rem;
+  margin: 1rem 0;
+  line-height: 1.6;
+  border-left: 4px solid #E67E22;
+}
+
+.criterios-especificos {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: space-between;
+  margin-top: 1.5rem;
+}
+
+.criterios-especificos div {
+  background: #FFF2E4;
+  padding: 0.8rem;
+  border-radius: 1rem;
+  flex: 1;
+  text-align: center;
+  font-size: 0.9rem;
+}
+
+.criterios-especificos i {
+  color: #E67E22;
+  margin-right: 6px;
+}
+
+.subobjetivos-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1rem;
+}
+
+.soo-card {
+  background: #FEFAF5;
+  border-radius: 1.5rem;
+  padding: 1.2rem;
+  text-align: center;
+  border: 1px solid #F4A261;
+  transition: transform 0.2s;
+}
+
+.soo-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+}
+
+.soo-card i {
+  font-size: 2.5rem;
+  color: #E67E22;
+  margin-bottom: 0.5rem;
+}
+
+.soo-card h3 {
+  font-size: 1.5rem;
+  color: #3E2C1F;
+  margin-bottom: 0.5rem;
+}
+
+.soo-card small {
+  display: inline-block;
+  background: #E67E2220;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 0.7rem;
+  margin: 0.5rem 0;
+}
+
+.tabla-container {
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #FEFAF5;
+  border-radius: 1rem;
+  overflow: hidden;
+}
+
+th, td {
+  padding: 12px 12px;
+  text-align: left;
+  border-bottom: 1px solid #FFE0B5;
+}
+
+th {
+  background-color: #E67E2210;
+  color: #8B3D0E;
+  font-weight: 700;
+}
+
+.table-subheader {
+  background-color: #F4E3CF;
+  font-weight: bold;
+  color: #3E2C1F;
+}
+
+.total-duracion {
+  margin-top: 1.5rem;
+  text-align: right;
+  font-size: 1.1rem;
+  padding: 0.8rem;
+  background: #F4A26120;
+  border-radius: 1rem;
+}
+
+.matriz-grid {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.matriz-grid div {
+  background: #FFF2E4;
+  padding: 1rem;
+  border-radius: 1rem;
+  min-width: 120px;
+  text-align: center;
+}
+
+.matriz-grid i {
+  font-size: 1.5rem;
+  color: #E67E22;
+}
+
+@media (max-width: 780px) {
+  .criterios-especificos div {
+    flex: 100%;
+  }
+  .matriz-grid {
+    flex-direction: column;
+  }
+  .matriz-grid i {
+    transform: rotate(90deg);
+  }
+}

@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>GeoWind Bolivia | ¿QUIÉN? - Estructura completa</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link rel="stylesheet" href="index.css">
+  <link rel="stylesheet" href="quien.css">
+</head>
+<body>
+
+  <button class="menu-toggle" id="menuToggleBtn"><i class="fas fa-bars"></i></button>
+
+  <div class="sidebar" id="sidebarMenu">
+    <div class="sidebar-header"><i class="fas fa-wind"></i><h3>GeoWind<br><span>IND 351</span></h3></div>
+    <nav class="sidebar-nav">
+      <a href="index.html" class="nav-link"><i class="fas fa-home"></i> Inicio</a>
+      <a href="que.html" class="nav-link"><i class="fas fa-question-circle"></i> ¿QUÉ?</a>
+      <a href="quien.html" class="nav-link active"><i class="fas fa-users"></i> ¿QUIÉN?</a>
+      <a href="como.html" class="nav-link"><i class="fas fa-cogs"></i> ¿CÓMO?</a>
+      <a href="cuando.html" class="nav-link"><i class="fas fa-calendar-alt"></i> ¿CUÁNDO?</a>
+      <a href="donde.html" class="nav-link"><i class="fas fa-map-marker-alt"></i> ¿DÓNDE?</a>
+      <a href="conque.html" class="nav-link"><i class="fas fa-tools"></i> ¿CON QUÉ?</a>
+      <a href="acosto.html" class="nav-link"><i class="fas fa-chart-line"></i> ¿A QUÉ COSTO?</a>
+    </nav>
+    <div class="sidebar-footer"><i class="fas fa-university"></i> UMSA - IND 351<br>Gestión 2026</div>
+  </div>
+  <div class="overlay" id="overlay"></div>
+
+  <main class="main-container">
+    <div class="hero">
+      <h1>👥 ¿QUIÉN? · Estructura Organizacional Completa</h1>
+      <div class="badge-umsa"><i class="fas fa-sitemap"></i> 34 personas · 12 puestos · 4 niveles jerárquicos</div>
+    </div>
+
+    <!-- ORGANIGRAMA EN ÁRBOL CON CONECTORES -->
+    <section class="section-card">
+      <div class="section-title"><i class="fas fa-diagram-project"></i> Organigrama Funcional (click en cada puesto → su manual)</div>
+      <div class="org-tree">
+        <!-- Nivel 1: Gerente -->
+        <div class="org-level level-1">
+          <div class="org-node root" data-target="gerente">
+            <i class="fas fa-user-tie"></i> Gerente de Proyecto<br><span class="cantidad">1</span>
+          </div>
+        </div>
+        <!-- Flecha vertical principal -->
+        <div class="org-connector vertical"></div>
+        
+        <!-- Nivel 2: Gerencial (3 puestos) -->
+        <div class="org-level level-2">
+          <div class="org-node" data-target="jefe-planta">
+            <i class="fas fa-hard-hat"></i> Jefe de Planta<br><span class="cantidad">1</span>
+          </div>
+          <div class="org-node" data-target="jefe-calidad">
+            <i class="fas fa-clipboard-check"></i> Jefe de Calidad<br><span class="cantidad">1</span>
+          </div>
+          <div class="org-node" data-target="jefe-logistica">
+            <i class="fas fa-truck"></i> Jefe de Logística<br><span class="cantidad">1</span>
+          </div>
+        </div>
+        <!-- Líneas de conexión desde nivel 2 hacia nivel 3 -->
+        <div class="org-connector horizontal-group">
+          <div class="branch-line"></div>
+          <div class="branch-line"></div>
+          <div class="branch-line"></div>
+        </div>
+        <div class="org-connector vertical-group"></div>
+
+        <!-- Nivel 3: Operativo (6 puestos) -->
+        <div class="org-level level-3">
+          <div class="org-node" data-target="tecnico-composites">
+            <i class="fas fa-fan"></i> Técnico Composites<br><span class="cantidad">6</span>
+          </div>
+          <div class="org-node" data-target="soldador">
+            <i class="fas fa-weld"></i> Soldador Certificado<br><span class="cantidad">4</span>
+          </div>
+          <div class="org-node" data-target="electricista">
+            <i class="fas fa-bolt"></i> Electricista Industrial<br><span class="cantidad">4</span>
+          </div>
+          <div class="org-node" data-target="ensamblador">
+            <i class="fas fa-microchip"></i> Ensamblador<br><span class="cantidad">8</span>
+          </div>
+          <div class="org-node" data-target="inspector">
+            <i class="fas fa-search"></i> Inspector Calidad<br><span class="cantidad">3</span>
+          </div>
+          <div class="org-node" data-target="almacenero">
+            <i class="fas fa-boxes"></i> Almacenero<br><span class="cantidad">2</span>
+          </div>
+        </div>
+        <!-- Conectores hacia nivel apoyo -->
+        <div class="org-connector horizontal-group small">
+          <div class="branch-line"></div>
+          <div class="branch-line"></div>
+        </div>
+        <div class="org-connector vertical-group"></div>
+
+        <!-- Nivel 4: Apoyo (2 puestos) -->
+        <div class="org-level level-4">
+          <div class="org-node" data-target="comprador">
+            <i class="fas fa-shopping-cart"></i> Comprador<br><span class="cantidad">1</span>
+          </div>
+          <div class="org-node" data-target="auxiliar">
+            <i class="fas fa-archive"></i> Auxiliar de Almacén<br><span class="cantidad">2</span>
+          </div>
+        </div>
+      </div>
+      <p class="total-personas"><i class="fas fa-users"></i> Total: 34 personas | Puesto de trabajo ≠ persona (una persona puede ejecutar múltiples tareas)</p>
+    </section>
+
+    <!-- SIMBOLOGÍA DE FUNCIONES -->
+    <section class="section-card">
+      <div class="section-title"><i class="fas fa-chalkboard"></i> Simbología de Funciones (IND 351)</div>
+      <div class="simbologia-grid">
+        <div class="simbolo-item"><span class="simbolo">IIII</span> Planificar / Organizar <br><small>Define qué, cuándo, cómo y con qué</small></div>
+        <div class="simbolo-item"><span class="simbolo">&lt;&gt;</span> Controlar <br><small>Verifica la correcta ejecución</small></div>
+        <div class="simbolo-item"><span class="simbolo">X</span> Ejecutar <br><small>Realiza físicamente la tarea</small></div>
+        <div class="simbolo-item"><span class="simbolo">&lt;</span> Asesorar / Ayudar <br><small>Brinda apoyo técnico o consultivo</small></div>
+      </div>
+    </section>
+
+    <!-- MATRIZ DE ASIGNACIÓN DE FUNCIONES (ampliada) -->
+    <section class="section-card">
+      <div class="section-title"><i class="fas fa-table-list"></i> Matriz de Asignación de Funciones (Extracto)</div>
+      <div class="tabla-responsive">
+        <table class="matriz-tabla">
+          <thead>
+            <tr><th>Tarea / Actividad</th><th>Gerente</th><th>J.Planta</th><th>J.Calidad</th><th>J.Logística</th><th>Téc.Composites</th><th>Soldador</th><th>Electricista</th><th>Inspector</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Planificar producción</td><td>IIII</td><td>IIII</td><td>&lt;&gt;</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+            <tr><td>Controlar avance</td><td>&lt;&gt;</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+            <tr><td>Fabricar aspas</td><td>-</td><td>&lt;&gt;</td><td>&lt;&gt;</td><td>-</td><td class="ejecuta">X</td><td>-</td><td>-</td><td>&lt;&gt;</td></tr>
+            <tr><td>Soldar estructura</td><td>-</td><td>&lt;&gt;</td><td>&lt;&gt;</td><td>-</td><td>-</td><td class="ejecuta">X</td><td>-</td><td>&lt;&gt;</td></tr>
+            <tr><td>Instalar eléctrico</td><td>-</td><td>&lt;&gt;</td><td>&lt;&gt;</td><td>-</td><td>-</td><td>-</td><td class="ejecuta">X</td><td>&lt;&gt;</td></tr>
+            <tr><td>Controlar calidad</td><td>-</td><td>-</td><td>&lt;&gt;</td><td>-</td><td>-</td><td>-</td><td>-</td><td class="ejecuta">X</td></tr>
+            <tr><td>Gestionar compras</td><td>-</td><td>-</td><td>-</td><td>IIII & X</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="nota-matriz"><i class="fas fa-info-circle"></i> IIII = Planifica · &lt;&gt; = Controla · X = Ejecuta · &lt; = Asesora</p>
+    </section>
+
+    <!-- MANUAL DE FUNCIONES PARA LOS 12 PUESTOS -->
+    <section class="section-card" id="manual-funciones">
+      <div class="section-title"><i class="fas fa-id-card"></i> Manual de Funciones (12 puestos)</div>
+      <div class="manual-grid" id="manual-container">
+        <!-- 1. Gerente -->
+        <div class="manual-card" id="gerente">
+          <h3><i class="fas fa-user-tie"></i> Gerente de Proyecto</h3>
+          <p><strong>Dependencia:</strong> Gerencia General</p>
+          <p><strong>Autoridad:</strong> Jefes de Planta, Calidad, Logística</p>
+          <p><strong>Obligaciones:</strong> Planificar proyecto (IIII), Controlar avance (&lt;&gt;), Reportar, Aprobar presupuestos.</p>
+          <p><strong>Derechos:</strong> Firmar contratos hasta $50k, autorizar horas extra, contratar.</p>
+          <p><strong>Perfil:</strong> Ing. Industrial/Mecánico, PMP, 5+ años.</p>
+        </div>
+        <!-- 2. Jefe Planta -->
+        <div class="manual-card" id="jefe-planta">
+          <h3><i class="fas fa-hard-hat"></i> Jefe de Planta</h3>
+          <p><strong>Dependencia:</strong> Gerente de Proyecto</p>
+          <p><strong>Autoridad:</strong> Técnicos, Soldadores, Ensambladores.</p>
+          <p><strong>Obligaciones:</strong> Ejecutar producción (X), planificar turnos (IIII), controlar eficiencia (&lt;&gt;).</p>
+          <p><strong>Derechos:</strong> Detener línea por seguridad, autorizar mantenimiento.</p>
+          <p><strong>Perfil:</strong> Ing. Mecánico/Industrial, 3+ años manufactura.</p>
+        </div>
+        <!-- 3. Jefe Calidad -->
+        <div class="manual-card" id="jefe-calidad">
+          <h3><i class="fas fa-clipboard-check"></i> Jefe de Calidad</h3>
+          <p><strong>Dependencia:</strong> Gerente de Proyecto</p>
+          <p><strong>Autoridad:</strong> Inspectores de Calidad.</p>
+          <p><strong>Obligaciones:</strong> Controlar calidad (&lt;&gt;), planificar inspecciones (IIII), emitir certificados (X).</p>
+          <p><strong>Derechos:</strong> Rechazar lotes, parar producción por calidad.</p>
+          <p><strong>Perfil:</strong> Ing. ISO 9001, 3+ años QC.</p>
+        </div>
+        <!-- 4. Jefe Logística -->
+        <div class="manual-card" id="jefe-logistica">
+          <h3><i class="fas fa-truck"></i> Jefe de Logística</h3>
+          <p><strong>Dependencia:</strong> Gerente de Proyecto</p>
+          <p><strong>Autoridad:</strong> Comprador, Almacenero, Auxiliar.</p>
+          <p><strong>Obligaciones:</strong> Planificar abastecimiento (IIII), controlar inventarios (&lt;&gt;), gestionar transporte (X).</p>
+          <p><strong>Derechos:</strong> Aprobar pedidos urgentes, renegociar plazos.</p>
+          <p><strong>Perfil:</strong> Ing. Logística, 3+ años cadena suministro.</p>
+        </div>
+        <!-- 5. Técnico Composites -->
+        <div class="manual-card" id="tecnico-composites">
+          <h3><i class="fas fa-fan"></i> Técnico en Composites</h3>
+          <p><strong>Dependencia:</strong> Jefe de Planta</p>
+          <p><strong>Autoridad:</strong> Ayudantes de producción.</p>
+          <p><strong>Obligaciones:</strong> Ejecutar fabricación aspas (X), preparar moldes (X), controlar curado (&lt;).</p>
+          <p><strong>Derechos:</strong> Solicitar EPP, parar proceso inseguro.</p>
+          <p><strong>Perfil:</strong> Técnico en materiales, experiencia fibra carbono.</p>
+        </div>
+        <!-- 6. Soldador -->
+        <div class="manual-card" id="soldador">
+          <h3><i class="fas fa-weld"></i> Soldador Certificado</h3>
+          <p><strong>Dependencia:</strong> Jefe de Planta</p>
+          <p><strong>Obligaciones:</strong> Ejecutar soldadura TIG (X), verificar calidad uniones (&lt;&gt;), mantener equipos.</p>
+          <p><strong>Derechos:</strong> Exigir EPP completo, reportar condiciones inseguras.</p>
+          <p><strong>Perfil:</strong> Certificación AWS, examen semestral, experiencia acero inox.</p>
+        </div>
+        <!-- 7. Electricista -->
+        <div class="manual-card" id="electricista">
+          <h3><i class="fas fa-bolt"></i> Electricista Industrial</h3>
+          <p><strong>Dependencia:</strong> Jefe de Planta</p>
+          <p><strong>Obligaciones:</strong> Instalar generador (X), cableado (X), pruebas eléctricas (&lt;&gt;).</p>
+          <p><strong>Derechos:</strong> Parar instalación defectuosa, solicitar herramientas.</p>
+          <p><strong>Perfil:</strong> Técnico electricista, licencia en AT/BT, 2+ años.</p>
+        </div>
+        <!-- 8. Ensamblador -->
+        <div class="manual-card" id="ensamblador">
+          <h3><i class="fas fa-microchip"></i> Ensamblador</h3>
+          <p><strong>Dependencia:</strong> Jefe de Planta</p>
+          <p><strong>Obligaciones:</strong> Unir aspas con rotor (X), balanceo (X), montaje final.</p>
+          <p><strong>Derechos:</strong> Recibir capacitación, usar herramientas adecuadas.</p>
+          <p><strong>Perfil:</strong> Técnico mecánico, habilidad manual, certificado en alturas.</p>
+        </div>
+        <!-- 9. Inspector Calidad -->
+        <div class="manual-card" id="inspector">
+          <h3><i class="fas fa-search"></i> Inspector de Calidad</h3>
+          <p><strong>Dependencia:</strong> Jefe de Calidad</p>
+          <p><strong>Obligaciones:</strong> Inspeccionar visual y dimensional (X), verificar soldaduras (X), emitir reportes.</p>
+          <p><strong>Derechos:</strong> Rechazar piezas no conformes.</p>
+          <p><strong>Perfil:</strong> Técnico con curso de control calidad, experiencia en composites/metales.</p>
+        </div>
+        <!-- 10. Almacenero -->
+        <div class="manual-card" id="almacenero">
+          <h3><i class="fas fa-boxes"></i> Almacenero</h3>
+          <p><strong>Dependencia:</strong> Jefe de Logística</p>
+          <p><strong>Obligaciones:</strong> Recepcionar materiales (X), registrar inventario (X), mantener orden.</p>
+          <p><strong>Derechos:</strong> Solicitar EPP para carga, reportar faltantes.</p>
+          <p><strong>Perfil:</strong> Técnico en logística, manejo de inventarios (ERP).</p>
+        </div>
+        <!-- 11. Comprador -->
+        <div class="manual-card" id="comprador">
+          <h3><i class="fas fa-shopping-cart"></i> Comprador</h3>
+          <p><strong>Dependencia:</strong> Jefe de Logística</p>
+          <p><strong>Obligaciones:</strong> Cotizar proveedores (X), gestionar órdenes de compra (X), seguimiento.</p>
+          <p><strong>Derechos:</strong> Solicitar aprobación de compras urgentes.</p>
+          <p><strong>Perfil:</strong> Técnico en compras, conocimiento de importación, manejo de proveedores.</p>
+        </div>
+        <!-- 12. Auxiliar Almacén -->
+        <div class="manual-card" id="auxiliar">
+          <h3><i class="fas fa-archive"></i> Auxiliar de Almacén</h3>
+          <p><strong>Dependencia:</strong> Jefe de Logística</p>
+          <p><strong>Obligaciones:</strong> Apoyar en recepción, etiquetado, organización física (X).</p>
+          <p><strong>Derechos:</strong> Usar montacargas con entrenamiento.</p>
+          <p><strong>Perfil:</strong> Bachiller, curso de manipulación manual de cargas.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- MARCO LEGAL LABORAL -->
+    <section class="section-card">
+      <div class="section-title"><i class="fas fa-gavel"></i> Marco Legal Laboral (Bolivia)</div>
+      <div class="legal-grid">
+        <div class="legal-item"><i class="fas fa-check-circle"></i> Ley General del Trabajo (1939)</div>
+        <div class="legal-item"><i class="fas fa-check-circle"></i> DS 28382 (Seguridad y Salud Ocupacional)</div>
+        <div class="legal-item"><i class="fas fa-check-circle"></i> Ley 1333 de Medio Ambiente</div>
+        <div class="legal-item"><i class="fas fa-check-circle"></i> Afiliación a Caja de Salud y AFP</div>
+        <div class="legal-item"><i class="fas fa-check-circle"></i> Certificación AWS soldadores, ISO 9001 inspectores</div>
+        <div class="legal-item"><i class="fas fa-check-circle"></i> Registro patronal Ministerio de Trabajo</div>
+      </div>
+    </section>
+
+    <footer>
+      <p>Universidad Mayor de San Andrés - Facultad de Ingeniería | IND 351 Administración Industrial</p>
+      <p>La Paz, Bolivia — 2026 | Puesto de trabajo ≠ persona: una persona puede realizar múltiples tareas</p>
+    </footer>
+  </main>
+
+  <script src="script.js"></script>
+  <script>
+    // Desplazamiento suave al hacer clic en los nodos del organigrama
+    document.querySelectorAll('.org-node').forEach(node => {
+      node.addEventListener('click', () => {
+        const targetId = node.getAttribute('data-target');
+        if (targetId) {
+          const target = document.getElementById(targetId);
+          if (target) {
+            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            target.style.transition = '0.3s';
+            target.style.boxShadow = '0 0 0 3px #E67E22';
+            setTimeout(() => { target.style.boxShadow = ''; }, 1500);
+          }
+        }
+      });
+    });
+  </script>
+</body>
+</html>

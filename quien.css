@@ -1,0 +1,250 @@
+/* Estilos específicos para ¿QUIÉN? - Versión organigrama en árbol con líneas */
+
+/* --- ORGANIGRAMA TIPO ÁRBOL --- */
+.org-tree {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 2rem 0;
+  width: 100%;
+  overflow-x: auto;
+}
+
+.org-level {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1.8rem;
+  margin: 0.5rem 0;
+  position: relative;
+}
+
+.org-node {
+  background: linear-gradient(145deg, #FFF9EF, #FFF2E4);
+  border-radius: 1.2rem;
+  padding: 0.6rem 1rem;
+  min-width: 130px;
+  text-align: center;
+  font-weight: 600;
+  color: #3E2C1F;
+  border: 1px solid #F4A261;
+  cursor: pointer;
+  transition: all 0.2s;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+}
+
+.org-node i {
+  font-size: 1.3rem;
+  display: block;
+  margin-bottom: 5px;
+  color: #E67E22;
+}
+
+.org-node .cantidad {
+  background: #E67E22;
+  color: white;
+  font-size: 0.7rem;
+  border-radius: 20px;
+  padding: 2px 8px;
+  display: inline-block;
+  margin-left: 5px;
+}
+
+.org-node:hover {
+  transform: translateY(-3px);
+  background: #FEF5E8;
+  box-shadow: 0 8px 18px rgba(0,0,0,0.1);
+  border-color: #E67E22;
+}
+
+/* Niveles específicos (colores) */
+.level-1 .org-node {
+  background: #3E2C1F;
+  color: #FEE6C5;
+  border-color: #E67E22;
+}
+.level-1 .org-node i { color: #F4A261; }
+
+.level-2 .org-node {
+  background: #E67E22;
+  color: white;
+  border-color: #C25D14;
+}
+.level-2 .org-node i { color: white; }
+
+.level-3 .org-node {
+  background: #F4A261;
+  color: #2C1E12;
+}
+.level-3 .org-node i { color: #2C1E12; }
+
+.level-4 .org-node {
+  background: #8B5A2B;
+  color: #FEE6C5;
+}
+.level-4 .org-node i { color: #FEE6C5; }
+
+/* Conectores verticales y horizontales */
+.org-connector.vertical {
+  width: 2px;
+  height: 25px;
+  background: #E67E22;
+  margin: 5px 0;
+}
+
+.org-connector.horizontal-group {
+  display: flex;
+  justify-content: center;
+  gap: 0;
+  margin: 0;
+  width: 100%;
+}
+.branch-line {
+  width: 80px;
+  height: 2px;
+  background: #E67E22;
+  margin: 0 auto;
+}
+.org-connector.vertical-group {
+  width: 2px;
+  height: 25px;
+  background: #E67E22;
+  margin: 5px auto;
+}
+
+/* Ajuste para diferentes anchos según número de elementos */
+.level-2 .org-node { min-width: 140px; }
+.level-3 .org-node { min-width: 135px; }
+.level-4 .org-node { min-width: 140px; }
+
+/* Responsive: apilar en móvil y quitar líneas complejas */
+@media (max-width: 850px) {
+  .org-level { flex-direction: column; align-items: center; gap: 1rem; }
+  .org-connector.vertical, .org-connector.vertical-group { display: none; }
+  .branch-line { display: none; }
+  .org-node { width: 80%; max-width: 220px; }
+}
+
+.total-personas {
+  text-align: center;
+  margin: 1rem auto;
+  font-weight: bold;
+  background: #F4E3CF;
+  display: inline-block;
+  width: auto;
+  padding: 0.5rem 1.5rem;
+  border-radius: 2rem;
+  font-size: 0.9rem;
+}
+
+/* Simbología */
+.simbologia-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  margin: 1rem 0;
+}
+.simbolo-item {
+  background: #FEFAF5;
+  border-radius: 1rem;
+  padding: 1rem;
+  text-align: center;
+  border-left: 4px solid #E67E22;
+}
+.simbolo {
+  background: #E67E22;
+  color: white;
+  font-family: monospace;
+  font-weight: bold;
+  font-size: 1.2rem;
+  padding: 4px 12px;
+  border-radius: 30px;
+  display: inline-block;
+  margin-bottom: 8px;
+}
+
+/* Matriz de funciones */
+.tabla-responsive {
+  overflow-x: auto;
+}
+.matriz-tabla {
+  width: 100%;
+  border-collapse: collapse;
+  background: #FEFAF5;
+  border-radius: 1rem;
+  font-size: 0.8rem;
+}
+.matriz-tabla th, .matriz-tabla td {
+  padding: 8px 5px;
+  text-align: center;
+  border: 1px solid #FFE0B5;
+}
+.matriz-tabla th {
+  background: #3E2C1F;
+  color: white;
+  font-weight: 600;
+}
+.matriz-tabla td.ejecuta {
+  background: #E67E2220;
+  font-weight: bold;
+  color: #C25D14;
+}
+.nota-matriz {
+  margin-top: 1rem;
+  font-size: 0.8rem;
+  text-align: center;
+  background: #FFF2E4;
+  padding: 0.5rem;
+  border-radius: 1rem;
+}
+
+/* Manual de funciones (12 tarjetas) */
+.manual-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+.manual-card {
+  background: white;
+  border-radius: 1.2rem;
+  padding: 1.2rem;
+  border-left: 5px solid #E67E22;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  transition: 0.2s;
+}
+.manual-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+}
+.manual-card h3 {
+  color: #3E2C1F;
+  margin-bottom: 0.8rem;
+  font-size: 1.2rem;
+}
+.manual-card p {
+  font-size: 0.8rem;
+  margin-bottom: 0.4rem;
+  line-height: 1.4;
+}
+
+/* Marco legal */
+.legal-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 0.8rem;
+  margin-top: 1rem;
+}
+.legal-item {
+  background: #FEF5E8;
+  padding: 0.7rem;
+  border-radius: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.85rem;
+}
+.legal-item i {
+  color: #2A9D8F;
+  font-size: 1.1rem;
+}

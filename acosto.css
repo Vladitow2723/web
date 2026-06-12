@@ -1,0 +1,446 @@
+/* acosto.css - Estilos completos para la página ¿A QUÉ COSTO? */
+
+/* --- Sección de teoría y tres barras --- */
+.teoria-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin: 1rem 0;
+}
+.teoria-item {
+  background: #FEFAF5;
+  border-radius: 1rem;
+  padding: 1rem;
+  border-left: 4px solid #E67E22;
+}
+.teoria-item h3 i {
+  color: #E67E22;
+  margin-right: 8px;
+}
+
+.costo-barras {
+  margin-top: 1.5rem;
+  background: #FFF9EF;
+  padding: 1rem;
+  border-radius: 1rem;
+}
+.barra-stack {
+  display: flex;
+  width: 100%;
+  height: 60px;
+  border-radius: 12px;
+  overflow: hidden;
+  margin: 0.5rem 0;
+}
+.barra-segmento {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: bold;
+  font-size: 0.75rem;
+  text-align: center;
+  padding: 0 4px;
+}
+.variable { background: #E67E22; }
+.fijo { background: #8B5A2B; }
+.mp { background: #2A9D8F; }
+.mo { background: #D45A1A; }
+.mt-1 { margin-top: 1rem; }
+.nota {
+  font-size: 0.8rem;
+  background: #FFF2E4;
+  padding: 0.5rem;
+  border-radius: 0.8rem;
+  margin-top: 0.5rem;
+}
+
+/* --- Tablas de costos --- */
+.tabla-container {
+  overflow-x: auto;
+  margin: 0.5rem 0;
+}
+.costos-table, .flujo-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #FEFAF5;
+  border-radius: 1rem;
+  font-size: 0.85rem;
+}
+.costos-table th, .flujo-table th,
+.costos-table td, .flujo-table td {
+  padding: 8px 6px;
+  border: 1px solid #FFE0B5;
+  text-align: center;
+}
+.costos-table th, .flujo-table th {
+  background: #3E2C1F;
+  color: white;
+}
+.table-total {
+  background: #F4E3CF;
+  font-weight: bold;
+}
+.enlace-conque {
+  text-align: right;
+  margin-top: 0.5rem;
+}
+.btn-enlace {
+  background: #E67E22;
+  color: white;
+  padding: 0.4rem 1rem;
+  border-radius: 2rem;
+  text-decoration: none;
+  font-size: 0.8rem;
+  transition: 0.2s;
+  display: inline-block;
+}
+.btn-enlace:hover {
+  background: #C25D14;
+  transform: scale(1.02);
+}
+.sub-section {
+  margin-bottom: 1.5rem;
+}
+.sub-section h3 {
+  margin-bottom: 0.5rem;
+  color: #3E2C1F;
+}
+.resumen-variable {
+  background: #E67E2210;
+  padding: 0.8rem;
+  border-radius: 1rem;
+  text-align: center;
+  font-weight: bold;
+  margin-top: 1rem;
+}
+
+/* --- Resumen total --- */
+.resumen-total {
+  background: #FFF2E4;
+  border-radius: 1rem;
+  padding: 1rem;
+}
+.resumen-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid #FFE0B5;
+}
+.resumen-item.total {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #E67E22;
+  border-bottom: none;
+}
+
+/* --- Precio de venta --- */
+.precio-pasos {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  justify-content: space-between;
+  background: #FEFAF5;
+  padding: 1rem;
+  border-radius: 1rem;
+}
+.paso {
+  background: #FFF2E4;
+  padding: 0.5rem 1rem;
+  border-radius: 2rem;
+  font-size: 0.9rem;
+}
+.paso.final {
+  background: #E67E22;
+  color: white;
+  font-weight: bold;
+}
+.competencia {
+  margin-top: 1rem;
+  text-align: center;
+  background: #2A9D8F10;
+  padding: 0.5rem;
+  border-radius: 1rem;
+}
+
+/* --- Punto de equilibrio --- */
+.equilibrio-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  margin: 1rem 0;
+}
+.formula-box {
+  background: #FEF5E8;
+  padding: 1rem;
+  border-radius: 1rem;
+}
+.grafico-pe {
+  background: #FFF2E4;
+  padding: 1rem;
+  border-radius: 1rem;
+  text-align: center;
+}
+.barra-pe {
+  background: #FFE0B5;
+  border-radius: 20px;
+  overflow: hidden;
+  margin: 1rem 0;
+}
+.barra-cf {
+  background: #D45A1A;
+  color: white;
+  text-align: center;
+  padding: 6px;
+  font-size: 0.7rem;
+}
+.barra-mc {
+  background: #2A9D8F;
+  color: white;
+  text-align: center;
+  padding: 6px;
+  font-size: 0.7rem;
+}
+.btn-modal-imagen {
+  background: #E67E22;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 2rem;
+  color: white;
+  cursor: pointer;
+  margin-top: 0.5rem;
+  transition: 0.2s;
+}
+.btn-modal-imagen:hover { background: #C25D14; }
+.interpretacion {
+  background: #E67E2210;
+  padding: 0.8rem;
+  border-radius: 1rem;
+  margin-top: 1rem;
+}
+
+/* --- Simulador interactivo --- */
+.calculadora {
+  background: #FEFAF5;
+  padding: 1rem;
+  border-radius: 1rem;
+}
+.calculadora label {
+  font-weight: bold;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+input[type="range"] {
+  width: 100%;
+  margin: 0.5rem 0;
+}
+.resultados-simulador {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 0.8rem;
+  margin-top: 1rem;
+}
+.sim-item {
+  background: #FFF2E4;
+  padding: 0.6rem;
+  border-radius: 1rem;
+  text-align: center;
+  font-size: 0.85rem;
+}
+.sim-item.utilidad {
+  background: #2A9D8F20;
+  font-weight: bold;
+}
+.sim-item.status {
+  grid-column: span 2;
+  background: #FFF2E4;
+}
+
+/* --- KPIs de rentabilidad --- */
+.kpi-rentabilidad {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 1rem;
+  margin-top: 1rem;
+}
+.kpi-card {
+  background: linear-gradient(145deg, #FFF9EF, #FFF2E4);
+  border-radius: 1.2rem;
+  padding: 1rem;
+  text-align: center;
+  border: 1px solid #F4A261;
+  transition: 0.2s;
+}
+.kpi-card:hover { transform: translateY(-4px); box-shadow: 0 8px 20px rgba(0,0,0,0.1); }
+.kpi-card i { font-size: 2rem; color: #E67E22; margin-bottom: 0.5rem; }
+.kpi-card h4 { font-size: 0.9rem; margin-bottom: 0.2rem; }
+.kpi-card p { font-size: 1.3rem; font-weight: bold; color: #E67E22; margin: 0.2rem 0; }
+
+/* --- Flujo de caja --- */
+.flujo-table .total-row {
+  background: #F4E3CF;
+  font-weight: bold;
+}
+.nota-flujo {
+  margin-top: 0.5rem;
+  font-size: 0.8rem;
+  text-align: center;
+  background: #FFF2E4;
+  padding: 0.5rem;
+  border-radius: 1rem;
+}
+
+/* --- Financiamiento y consideraciones --- */
+.financiamiento-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+.fuente-card {
+  background: #FEF5E8;
+  border-radius: 1rem;
+  padding: 1rem;
+  text-align: center;
+}
+.fuente-card i { font-size: 2rem; color: #E67E22; margin-bottom: 0.5rem; }
+.consideraciones {
+  background: #FFF2E4;
+  padding: 1rem;
+  border-radius: 1rem;
+}
+.consideraciones ul {
+  margin-left: 1.5rem;
+  margin-top: 0.5rem;
+}
+.consideraciones li { margin-bottom: 0.3rem; }
+
+/* --- Resumen ejecutivo --- */
+.resumen-ejecutivo {
+  background: #FEFAF5;
+}
+.resumen-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 0.8rem;
+  margin: 1rem 0;
+}
+.resumen-grid div {
+  background: #FFF2E4;
+  padding: 0.6rem;
+  border-radius: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.resumen-grid span { font-weight: normal; }
+.resumen-grid strong { color: #E67E22; }
+.conclusion-viabilidad {
+  background: #2A9D8F10;
+  padding: 0.8rem;
+  border-radius: 1rem;
+  text-align: center;
+  font-weight: bold;
+  margin-top: 1rem;
+}
+
+/* --- Modal y zoom --- */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 2000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.85);
+  justify-content: center;
+  align-items: center;
+}
+.modal-content {
+  background: #FFF9EF;
+  border-radius: 2rem;
+  width: 90%;
+  max-width: 1000px;
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  animation: fadeIn 0.3s;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+}
+@keyframes fadeIn { from { opacity: 0; transform: scale(0.95); } to { opacity: 1; transform: scale(1); } }
+.close-modal {
+  align-self: flex-end;
+  font-size: 2rem;
+  font-weight: bold;
+  color: #E67E22;
+  cursor: pointer;
+  padding: 0.5rem 1rem;
+}
+.close-modal:hover { color: #C25D14; }
+.modal-content h3 { text-align: center; margin: 0 0 0.5rem; color: #3E2C1F; }
+.zoom-controls {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin: 0.5rem 0;
+}
+.zoom-btn {
+  background: #E67E22;
+  border: none;
+  color: white;
+  font-size: 1.2rem;
+  padding: 0.4rem 1rem;
+  border-radius: 2rem;
+  cursor: pointer;
+  transition: 0.2s;
+}
+.zoom-btn:hover { background: #C25D14; }
+.modal-image-container {
+  overflow: auto;
+  text-align: center;
+  padding: 1rem;
+  max-height: 65vh;
+  background: #FEF5E8;
+}
+.modal-image-container img {
+  transition: transform 0.2s ease;
+  max-width: 100%;
+  transform-origin: center;
+  cursor: zoom-in;
+}
+.modal-nota {
+  text-align: center;
+  font-size: 0.8rem;
+  padding: 0.8rem;
+  color: #6c5b4b;
+}
+
+/* --- Responsive --- */
+@media (max-width: 780px) {
+  .equilibrio-grid {
+    grid-template-columns: 1fr;
+  }
+  .resultados-simulador {
+    grid-template-columns: 1fr;
+  }
+  .sim-item.status {
+    grid-column: span 1;
+  }
+  .kpi-rentabilidad {
+    grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  }
+  .resumen-grid div {
+    flex-direction: column;
+    text-align: center;
+    gap: 0.3rem;
+  }
+  .precio-pasos {
+    flex-direction: column;
+    align-items: center;
+  }
+  .teoria-grid {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,0 +1,215 @@
+/* Estilos específicos para ¿CÓMO? - Versión profesional */
+
+.procesos-tipos {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1rem;
+}
+
+.proceso-card {
+  background: #FEFAF5;
+  border-radius: 1.5rem;
+  padding: 1.5rem;
+  text-align: center;
+  transition: transform 0.2s, box-shadow 0.2s;
+  border-top: 4px solid;
+}
+.proceso-card:hover { transform: translateY(-5px); box-shadow: 0 8px 20px rgba(0,0,0,0.1); }
+.proceso-card i { font-size: 2.5rem; margin-bottom: 0.8rem; }
+.estrategico { border-top-color: #2A9D8F; }
+.estrategico i { color: #2A9D8F; }
+.valor { border-top-color: #E67E22; }
+.valor i { color: #E67E22; }
+.apoyo { border-top-color: #8B5A2B; }
+.apoyo i { color: #8B5A2B; }
+
+/* Tiempos y fórmula */
+.tiempos-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+  margin: 1rem 0;
+}
+.tiempo-item {
+  background: #FFF2E4;
+  padding: 0.5rem 1rem;
+  border-radius: 2rem;
+  font-size: 0.9rem;
+}
+.formula-box {
+  background: #E67E2210;
+  padding: 1rem;
+  border-radius: 1.5rem;
+  text-align: center;
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+/* Evolución */
+.evolucion {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  margin: 1.5rem 0;
+  background: #FEF5E8;
+  padding: 1.5rem;
+  border-radius: 2rem;
+}
+.evolucion span {
+  background: #E67E22;
+  color: white;
+  padding: 0.8rem 1.2rem;
+  border-radius: 2rem;
+  font-weight: bold;
+  text-align: center;
+  min-width: 100px;
+}
+.evolucion i { font-size: 1.5rem; color: #E67E22; }
+.ejemplo-evolucion {
+  text-align: center;
+  background: #FFF2E4;
+  padding: 0.8rem;
+  border-radius: 1rem;
+  margin-top: 0.5rem;
+}
+
+/* SOPs */
+.sop {
+  background: #FEFAF5;
+  border-radius: 1.5rem;
+  padding: 1.2rem;
+  margin-bottom: 1.5rem;
+  border-left: 4px solid #E67E22;
+}
+.sop h3 { color: #3E2C1F; margin-bottom: 0.5rem; }
+.sop h3 i { color: #E67E22; margin-right: 10px; }
+.pasos {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 1rem 0;
+}
+.pasos div {
+  background: #FFF2E4;
+  padding: 0.3rem 0.8rem;
+  border-radius: 20px;
+  font-size: 0.85rem;
+}
+.control-calidad {
+  background: #E67E2210;
+  padding: 0.5rem;
+  border-radius: 1rem;
+  margin-top: 0.8rem;
+  font-size: 0.9rem;
+}
+
+/* Tabla de procesos críticos */
+.tabla-container { overflow-x: auto; }
+.critica-tabla {
+  width: 100%;
+  border-collapse: collapse;
+  background: #FEFAF5;
+  border-radius: 1rem;
+}
+.critica-tabla th, .critica-tabla td {
+  padding: 10px 8px;
+  border: 1px solid #FFE0B5;
+  text-align: center;
+}
+.critica-tabla th { background: #3E2C1F; color: white; }
+
+/* KPIs mejorados */
+.kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.2rem;
+  margin-top: 1rem;
+}
+.kpi-card {
+  background: linear-gradient(135deg, #FFF9EF, #FFF2E4);
+  border-radius: 1.2rem;
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  transition: all 0.3s;
+  border: 1px solid #F4A261;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+}
+.kpi-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 20px rgba(0,0,0,0.1);
+  border-color: #E67E22;
+}
+.kpi-icon {
+  background: #E67E22;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.8rem;
+  color: white;
+}
+.kpi-info { flex: 1; }
+.kpi-info h4 { font-size: 1rem; margin-bottom: 0.2rem; color: #3E2C1F; }
+.kpi-meta { font-size: 1.2rem; font-weight: bold; color: #E67E22; }
+.kpi-info small { font-size: 0.7rem; color: #6c5b4b; }
+
+.socioeconomico {
+  font-size: 1.1rem;
+  text-align: center;
+  background: #E67E2210;
+  padding: 1.5rem;
+  border-radius: 1.5rem;
+  font-style: italic;
+}
+
+/* Videos y referencias */
+.videos-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin: 1.5rem 0;
+}
+.video-item {
+  background: #FEFAF5;
+  border-radius: 1rem;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+.video-item iframe {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border: none;
+}
+.video-item p {
+  padding: 0.8rem;
+  text-align: center;
+  font-weight: 500;
+  margin: 0;
+}
+.referencias {
+  background: #FFF2E4;
+  padding: 1rem;
+  border-radius: 1rem;
+  margin-top: 1rem;
+}
+.referencias h3 { margin-bottom: 0.5rem; color: #3E2C1F; }
+.referencias ul { margin-left: 1.2rem; }
+.referencias li { margin-bottom: 0.3rem; }
+.referencias a { color: #E67E22; text-decoration: none; }
+.referencias a:hover { text-decoration: underline; }
+
+@media (max-width: 780px) {
+  .evolucion { flex-direction: column; }
+  .evolucion i { transform: rotate(90deg); }
+  .pasos { justify-content: center; }
+  .kpi-card { flex-direction: column; text-align: center; }
+  .kpi-icon { margin: 0 auto; }
+}
